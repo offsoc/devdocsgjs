@@ -93,5 +93,8 @@ RUN apk --update add nodejs build-base libstdc++ gzip git zlib-dev && \
     rm -rf /var/cache/apk/* /tmp ~/.gem /root/.bundle/cache \
     /usr/local/bundle/cache /usr/lib/node_modules
 
+RUN adduser -D -h /devdocs -s /bin/bash -G root -u 1000 rbuser
+RUN chmod -R 775 /devdocs
+RUN chown -R rbuser:root /devdocs
 EXPOSE 9292
-CMD rackup -o 0.0.0.0
+CMD bundle exec rackup -o 0.0.0.0
