@@ -16,11 +16,12 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
         gstreamer1-{,plugins-base-}devel gtk{2,3}-devel gtksourceview3-devel \
         gupnp-devel gupnp-dlna-devel harfbuzz-devel ibus-devel \
         keybinder3-devel libappindicator-gtk3-devel libappstream-glib-devel \
-        libchamplain-devel libgcab1-devel libgdata-devel libgudev-devel \
-        libgweather-devel libgxps-devel libnotify-devel libpeas-devel \
-        librsvg2-devel libsecret-devel libzapojit-devel mutter pango-devel \
-        polkit-devel poppler-glib-devel rest-devel telepathy-glib-devel \
-        tracker-devel udisks-devel upower-devel vte{,291}-devel && \
+        libchamplain-devel libgcab1-devel libgdata-devel libgda-devel \
+        libgudev-devel libgweather-devel libgxps-devel libnotify-devel \
+        libpeas-devel librsvg2-devel libsecret-devel libzapojit-devel mutter \
+        pango-devel polkit-devel poppler-glib-devel rest-devel \
+        telepathy-glib-devel tracker-devel udisks-devel upower-devel \
+        vte{,291}-devel && \
     dnf clean all && \
     rm -rf /var/cache/yum
 
@@ -49,7 +50,7 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         coglpango10 coglpango20 coglpango5 dbusmenu04 ebook12 ebookcontacts12 \
         edataserver12 edataserverui12 evincedocument30 evinceview30 folks06 \
         folksdummy06 folkseds06 folkstelepathy06 gcab10 gck1 gcr3 gcrui3 \
-        gdata00 gdesktopenums30 gdk20 gdk30 gdkpixbuf20 gdkx1120 gdkx1130 \
+        gda50 gdata00 gdesktopenums30 gdk20 gdk30 gdkpixbuf20 gdkx1120 gdkx1130 \
         gee08 geocodeglib10 gio20 girepository20 glib20 gmodule20 goa10 \
         gobject20 gom10 grl03 grlnet03 grlpls03 gsound10 gspell1 gssdp10 gst10 \
         gstallocators10 gstapp10 gstaudio10 gstbase10 gstcheck10 \
