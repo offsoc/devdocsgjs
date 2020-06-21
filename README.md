@@ -1,3 +1,17 @@
+# [DevDocs for GJS](https://gjs-docs.gnome.org) — API documentation browser for the GNOME JavaScript platform
+
+This is the source code for the website with API documentation for writing GNOME applications in JavaScript. It's based on an app called DevDocs, which combines multiple API documentations in a fast, organized, and searchable interface.
+
+# Contributing
+
+- Request missing documentation sets or report APIs that don't work quite the way they're documented, in the [issue tracker](https://gitlab.gnome.org/GNOME/devdocsgjs/-/issues).
+- Check out the [code](https://gitlab.gnome.org/GNOME/devdocsgjs) and make improvements.
+- Discuss things in the [chat channel](https://gnome.riot.im/#/room/#_gimpnet_#javascript:gnome.org).
+
+----
+
+The README from the original DevDocs project follows:
+
 # [DevDocs](https://devdocs.io) — API Documentation Browser [![Build Status](https://travis-ci.org/freeCodeCamp/devdocs.svg?branch=master)](https://travis-ci.org/freeCodeCamp/devdocs)
 
 DevDocs combines multiple developer documentations in a clean and organized web UI with instant search, offline support, mobile version, dark theme, keyboard shortcuts, and more.
@@ -146,7 +160,7 @@ DevDocs's own documentation is available on the [wiki](https://github.com/freeCo
 * [Ubuntu Touch app](https://uappexplorer.com/app/devdocsunofficial.berkes)
 * [Sublime Text plugin](https://sublime.wbond.net/packages/DevDocs)
 * [Atom plugin](https://atom.io/packages/devdocs)
-* [Brackets extension](https://github.com/gruehle/dev-docs-viewer) 
+* [Brackets extension](https://github.com/gruehle/dev-docs-viewer)
 * [Fluid](http://fluidapp.com) for turning DevDocs into a real OS X app
 * [GTK shell / Vim integration](https://github.com/naquad/devdocs-shell)
 * [Emacs lookup](https://github.com/skeeto/devdocs-lookup)
