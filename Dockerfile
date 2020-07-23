@@ -13,7 +13,7 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
         glib2-devel gnome-online-accounts-devel gnome-shell \
         gobject-introspection-devel gom-devel graphene-devel grilo-devel \
         gsettings-desktop-schemas-devel gsound-devel gspell-devel \
-        gstreamer1-{,plugins-base-}devel gtk{2,3}-devel gtksourceview3-devel \
+        gstreamer1-{,plugins-base-}devel gtk{2,3,4}-devel gtksourceview3-devel \
         gupnp-devel gupnp-dlna-devel harfbuzz-devel ibus-devel \
         keybinder3-devel libappindicator-gtk3-devel libappstream-glib-devel \
         libchamplain-devel libgcab1-devel libgdata-devel libgda-devel \
@@ -52,19 +52,20 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         coglpango10 coglpango20 coglpango6 dbusmenu04 ebook12 ebookcontacts12 \
         edataserver12 edataserverui12 evincedocument30 evinceview30 folks06 \
         folksdummy06 folkseds06 folkstelepathy06 gcab10 gck1 gcr3 gcrui3 \
-        gda50 gdata00 gdesktopenums30 gdk20 gdk30 gdkpixbuf20 gdkx1120 gdkx1130 \
-        gee08 geocodeglib10 gio20 girepository20 glib20 gmodule20 goa10 \
-        gobject20 gom10 graphene10 grl03 grlnet03 grlpls03 gsound10 gspell1 \
-        gssdp10 gst10 gstallocators10 gstapp10 gstaudio10 gstbase10 gstcheck10 \
-        gstcontroller10 gstgl10 gstnet10 gstpbutils10 gstrtp10 gstrtsp10 \
-        gstsdp10 gsttag10 gstvideo10 gtk20 gtk30 gtkchamplain012 gtkclutter10 \
-        gtkosxapplication10 gtksource30 gudev10 gupnp10 gupnpdlna20 \
-        gupnpdlnagst20 gvc10 gweather30 gxps01 ibus10 javascriptcore40 json10 \
-        keybinder30 meta6 nm10 notify07 pango10 pangocairo10 pangoft210 \
-        pangoxft10 peas10 peasgtk10 polkit10 polkitagent10 poppler018 rest07 \
-        restextras07 rsvg20 secret1 shell01 soup24 soupgnome24 st10 \
-        telepathyglib012 tracker20 trackercontrol20 trackerminer20 \
-        upowerglib10 vte00 vte291 webkit240 webkit2webextension40 zpj00 \
+        gda50 gdata00 gdesktopenums30 gdk20 gdk30 gdk40 gdkpixbuf20 gdkx1120 \
+        gdkx1130 gdkx1140 gee08 geocodeglib10 gio20 girepository20 glib20 \
+        gmodule20 gnomebluetooth10 goa10 gobject20 gom10 graphene10 grl03 \
+        grlnet03 grlpls03 gsk40 gsound10 gspell1 gssdp10 gst10 gstallocators10 \
+        gstapp10 gstaudio10 gstbase10 gstcheck10 gstcontroller10 gstgl10 \
+        gstnet10 gstpbutils10 gstrtp10 gstrtsp10 gstsdp10 gsttag10 gstvideo10 \
+        gtk20 gtk30 gtk40 gtkchamplain012 gtkclutter10 gtkosxapplication10 \
+        gtksource30 gudev10 gupnp10 gupnpdlna20 gupnpdlnagst20 gvc10 \
+        gweather30 gxps01 ibus10 javascriptcore40 json10 keybinder30 meta6 \
+        nm10 notify07 pango10 pangocairo10 pangoft210 pangoxft10 peas10 \
+        peasgtk10 polkit10 polkitagent10 poppler018 rest07 restextras07 rsvg20 \
+        secret1 shell01 soup24 soupgnome24 st10 telepathyglib012 tracker20 \
+        trackercontrol20 trackerminer20 upowerglib10 vte00 vte291 webkit240 \
+        webkit2webextension40 zpj00 \
         cally3 clutter3 clutterx113 cogl3 coglpango3 meta3 \
         cally4 clutter4 clutterx114 cogl4 coglpango4 meta4 \
         cally5 clutter5 clutterx115 cogl5 coglpango5 meta5; \

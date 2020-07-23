@@ -1,4 +1,9 @@
-[  [
+[
+  [
+    "2020-07-23",
+    "New documentations: <a href='/gnomebluetooth10'>GnomeBluetooth</a>, <a href='/gdk40'>Gdk4</a> (Unstable), <a href='/gdkx1140'>GdkX114</a> (Unstable), <a href='/gsk40'>Gsk4</a> (Unstable), <a href='/gtk40'>Gtk4</a> (Unstable)"
+  ],
+  [
     "2020-04-27",
     "New documentations: <a href='/graphene10'>Graphene</a>, <a href='/cally6'>Cally 6</a> (Mutter version), <a href='/clutter4'>Clutter 6</a> (Mutter version), <a href='/clutterx116'>ClutterX11 6</a> (Mutter version), <a href='/cogl6'>Cogl 6</a> (Mutter version), <a href='/coglpango6'>CoglPango 6</a> (Mutter version), <a href='/meta6'>Mutter 6</a>"
   ],
