@@ -10,9 +10,9 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
     dnf install -y ruby rubygem-bundler ruby-devel python3-markdown \
         NetworkManager-libnm-devel cairo-devel cheese-libs-devel \
         clutter-{gst3,gtk}-devel evince-devel folks-devel geocode-glib-devel \
-        glib2-devel gnome-online-accounts-devel gnome-shell \
-        gobject-introspection-devel gom-devel graphene-devel grilo-devel \
-        gsettings-desktop-schemas-devel gsound-devel gspell-devel \
+        glib2-devel gnome-bluetooth-libs-devel gnome-online-accounts-devel \
+        gnome-shell gobject-introspection-devel gom-devel graphene-devel \
+        grilo-devel gsettings-desktop-schemas-devel gsound-devel gspell-devel \
         gstreamer1-{,plugins-base-}devel gtk{2,3,4}-devel gtksourceview3-devel \
         gupnp-devel gupnp-dlna-devel harfbuzz-devel ibus-devel \
         keybinder3-devel libappindicator-gtk3-devel libappstream-glib-devel \
