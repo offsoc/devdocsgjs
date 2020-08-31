@@ -17,7 +17,7 @@ class GirCLI < Thor
     if gir_dir
       glob = Dir.glob(gir_dir + '/*.gir')
     else
-      glob = XDG['DATA_DIRS'].glob('gir-1.0/*.gir')
+      glob = XDG::Data.new.directories.map {|dir| dir.glob('gir-1.0/*.gir') }.flatten
     end
     glob.each do |path|
       puts 'Generating scraper for ' + File.basename(path) + '...'

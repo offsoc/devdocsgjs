@@ -123,7 +123,7 @@ GEM
     unicode-display_width (1.4.1)
     unicode_utils (1.4.0)
     unix_utils (0.0.15)
-    xdg (2.2.3)
+    xdg (4.2.0)
     yajl-ruby (1.4.1)
 
 PLATFORMS
