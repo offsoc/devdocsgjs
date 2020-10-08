@@ -1,5 +1,9 @@
 [
   [
+    "2020-10-07",
+    "New documentations: <a href='/cally7/'>Cally 7</a> (Mutter version), <a href='/clutter7/'>Clutter 7</a> (Mutter version), <a href='/clutterx117/'>ClutterX11 7</a> (Mutter version), <a href='/cogl7/'>Cogl 7</a> (Mutter version), <a href='/coglpango7/'>CoglPango 7</a> (Mutter version), <a href='/geoclue20/'>Geoclue 2.0</a>, <a href='/meta7/'>Mutter 7</a>"
+  ],
+  [
     "2020-08-05",
     "New documentations: <a href='/gstinsertbin10/'>GstInsertBin</a>, <a href='/gstmpegts10/'>GstMpegts</a>, <a href='/gstplayer10/'>GstPlayer</a>, <a href='/gstwebrtc10/'>GstWebRTC</a>"
   ],
