@@ -1,4 +1,4 @@
-FROM fedora:32 AS build
+FROM fedora:33 AS build
 
 RUN dnf install -y glibc-langpack-en
 ENV LANG en_US.UTF-8
@@ -30,6 +30,7 @@ COPY lib/docs/scrapers/gnome/girs/GtkosxApplication-1.0.gir /usr/share/gir-1.0/
 COPY lib/docs/scrapers/gnome/girs/mutter-3 /usr/lib64/mutter-3
 COPY lib/docs/scrapers/gnome/girs/mutter-4 /usr/lib64/mutter-4
 COPY lib/docs/scrapers/gnome/girs/mutter-5 /usr/lib64/mutter-5
+COPY lib/docs/scrapers/gnome/girs/mutter-6 /usr/lib64/mutter-6
 
 COPY . /opt/devdocs/
 WORKDIR /opt/devdocs
@@ -40,16 +41,17 @@ RUN bundle exec thor gir:generate_all /usr/lib64/mutter-3
 RUN bundle exec thor gir:generate_all /usr/lib64/mutter-4
 RUN bundle exec thor gir:generate_all /usr/lib64/mutter-5
 RUN bundle exec thor gir:generate_all /usr/lib64/mutter-6
+RUN bundle exec thor gir:generate_all /usr/lib64/mutter-7
 
 # Some of the gnome-shell GIRs need extra include paths
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/Gvc-1.0.gir
-RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-0.1.gir --include /usr/lib64/mutter-6
-RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /usr/lib64/mutter-6
+RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-0.1.gir --include /usr/lib64/mutter-7
+RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /usr/lib64/mutter-7
 
 RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
-        cally10 cally6 camel12 champlain012 cheese30 clutter10 clutter6 \
-        cluttergdk10 cluttergst30 clutterx1110 clutterx116 cogl10 cogl20 cogl6 \
-        coglpango10 coglpango20 coglpango6 dbusmenu04 ebook12 ebookcontacts12 \
+        cally10 cally7 camel12 champlain012 cheese30 clutter10 clutter7 \
+        cluttergdk10 cluttergst30 clutterx1110 clutterx117 cogl10 cogl20 cogl7 \
+        coglpango10 coglpango20 coglpango7 dbusmenu04 ebook12 ebookcontacts12 \
         edataserver12 edataserverui12 evincedocument30 evinceview30 folks06 \
         folksdummy06 folkseds06 folkstelepathy06 gcab10 gck1 gcr3 gcrui3 \
         gda50 gdata00 gdesktopenums30 gdk20 gdk30 gdk40 gdkpixbuf20 gdkx1120 \
@@ -62,7 +64,7 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         gstvideo10 gstvulkan10 gstwebrtc10 gtk20 gtk30 gtk40 gtkchamplain012 \
         gtkclutter10 gtkosxapplication10 gtksource30 gudev10 gupnp10 \
         gupnpdlna20 gupnpdlnagst20 gvc10 gweather30 gxps01 ibus10 \
-        javascriptcore40 json10 keybinder30 meta6 nm10 notify07 pango10 \
+        javascriptcore40 json10 keybinder30 meta7 nm10 notify07 pango10 \
         pangocairo10 pangoft210 pangoxft10 peas10 peasgtk10 polkit10 \
         polkitagent10 poppler018 rest07 restextras07 rsvg20 secret1 shell01 \
         soup24 soupgnome24 st10 telepathyglib012 tracker20 trackercontrol20 \
@@ -70,7 +72,8 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         webkit2webextension40 zpj00 \
         cally3 clutter3 clutterx113 cogl3 coglpango3 meta3 \
         cally4 clutter4 clutterx114 cogl4 coglpango4 meta4 \
-        cally5 clutter5 clutterx115 cogl5 coglpango5 meta5; \
+        cally5 clutter5 clutterx115 cogl5 coglpango5 meta5 \
+        cally6 clutter6 clutterx116 cogl6 coglpango6 meta6; \
       do echo $docset; bundle exec thor docs:generate $docset --force; done
 
 # Intentionally omitted:
