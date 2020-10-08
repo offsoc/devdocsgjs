@@ -9,10 +9,11 @@ ENV LC_ALL en_US.UTF-8
 RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
     dnf install -y ruby rubygem-bundler ruby-devel python3-markdown \
         NetworkManager-libnm-devel cairo-devel cheese-libs-devel \
-        clutter-{gst3,gtk}-devel evince-devel folks-devel geocode-glib-devel \
-        glib2-devel gnome-bluetooth-libs-devel gnome-online-accounts-devel \
-        gnome-shell gobject-introspection-devel gom-devel graphene-devel \
-        grilo-devel gsettings-desktop-schemas-devel gsound-devel gspell-devel \
+        clutter-{gst3,gtk}-devel evince-devel folks-devel geoclue2-devel \
+        geocode-glib-devel glib2-devel gnome-bluetooth-libs-devel \
+        gnome-online-accounts-devel gnome-shell gobject-introspection-devel \
+        gom-devel graphene-devel grilo-devel gsettings-desktop-schemas-devel \
+        gsound-devel gspell-devel \
         gstreamer1-{,plugins-base-,plugins-bad-free-}devel gtk{2,3,4}-devel \
         gtksourceview3-devel gupnp-devel gupnp-dlna-devel harfbuzz-devel \
         ibus-devel keybinder3-devel libappindicator-gtk3-devel \
@@ -55,12 +56,12 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         edataserver12 edataserverui12 evincedocument30 evinceview30 folks06 \
         folksdummy06 folkseds06 folkstelepathy06 gcab10 gck1 gcr3 gcrui3 \
         gda50 gdata00 gdesktopenums30 gdk20 gdk30 gdk40 gdkpixbuf20 gdkx1120 \
-        gdkx1130 gdkx1140 gee08 geocodeglib10 gio20 girepository20 glib20 \
-        gmodule20 gnomebluetooth10 goa10 gobject20 gom10 graphene10 grl03 \
-        grlnet03 grlpls03 gsk40 gsound10 gspell1 gssdp10 gst10 gstallocators10 \
-        gstapp10 gstaudio10 gstbadaudio10 gstbase10 gstcheck10 gstcodecs10 \
-        gstcontroller10 gstgl10 gstinsertbin10 gstmpegts10 gstnet10 \
-        gstpbutils10 gstplayer10 gstrtp10 gstrtsp10 gstsdp10 gsttag10 \
+        gdkx1130 gdkx1140 gee08 geoclue20 geocodeglib10 gio20 girepository20 \
+        glib20 gmodule20 gnomebluetooth10 goa10 gobject20 gom10 graphene10 \
+        grl03 grlnet03 grlpls03 gsk40 gsound10 gspell1 gssdp10 gst10 \
+        gstallocators10 gstapp10 gstaudio10 gstbadaudio10 gstbase10 gstcheck10 \
+        gstcodecs10 gstcontroller10 gstgl10 gstinsertbin10 gstmpegts10 \
+        gstnet10 gstpbutils10 gstplayer10 gstrtp10 gstrtsp10 gstsdp10 gsttag10 \
         gstvideo10 gstvulkan10 gstwebrtc10 gtk20 gtk30 gtk40 gtkchamplain012 \
         gtkclutter10 gtkosxapplication10 gtksource30 gudev10 gupnp10 \
         gupnpdlna20 gupnpdlnagst20 gvc10 gweather30 gxps01 ibus10 \
