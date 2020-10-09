@@ -9,7 +9,7 @@ ENV LC_ALL en_US.UTF-8
 RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
     dnf install -y ruby rubygem-bundler ruby-devel python3-markdown \
         NetworkManager-libnm-devel cairo-devel cheese-libs-devel \
-        clutter-{gst3,gtk}-devel libhandy1-devel evince-devel folks-devel geoclue2-devel \
+        clutter-{gst3,gtk}-devel evince-devel folks-devel geoclue2-devel \
         geocode-glib-devel glib2-devel gnome-bluetooth-libs-devel \
         gnome-online-accounts-devel gnome-shell gobject-introspection-devel \
         gom-devel graphene-devel grilo-devel gsettings-desktop-schemas-devel \
@@ -19,10 +19,10 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
         ibus-devel keybinder3-devel libappindicator-gtk3-devel \
         libappstream-glib-devel libchamplain-devel libgcab1-devel \
         libgdata-devel libgda-devel libgudev-devel libgweather-devel \
-        libgxps-devel libnotify-devel libpeas-devel librsvg2-devel \
-        libsecret-devel libzapojit-devel mutter pango-devel polkit-devel \
-        poppler-glib-devel rest-devel telepathy-glib-devel tracker-devel \
-        udisks-devel upower-devel vte{,291}-devel && \
+        libgxps-devel libhandy1-devel libnotify-devel libpeas-devel \
+        librsvg2-devel libsecret-devel libzapojit-devel mutter pango-devel \
+        polkit-devel poppler-glib-devel rest-devel telepathy-glib-devel \
+        tracker-devel udisks-devel upower-devel vte{,291}-devel && \
     dnf clean all && \
     rm -rf /var/cache/yum
 
@@ -49,7 +49,7 @@ RUN bundle exec thor gir:generate /usr/share/gnome-shell/Gvc-1.0.gir
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-0.1.gir --include /usr/lib64/mutter-7
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /usr/lib64/mutter-7
 
-RUN for docset in handy1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
+RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally10 cally7 camel12 champlain012 cheese30 clutter10 clutter7 \
         cluttergdk10 cluttergst30 clutterx1110 clutterx117 cogl10 cogl20 cogl7 \
         coglpango10 coglpango20 coglpango7 dbusmenu04 ebook12 ebookcontacts12 \
@@ -64,7 +64,7 @@ RUN for docset in handy1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         gstnet10 gstpbutils10 gstplayer10 gstrtp10 gstrtsp10 gstsdp10 gsttag10 \
         gstvideo10 gstvulkan10 gstwebrtc10 gtk20 gtk30 gtk40 gtkchamplain012 \
         gtkclutter10 gtkosxapplication10 gtksource30 gudev10 gupnp10 \
-        gupnpdlna20 gupnpdlnagst20 gvc10 gweather30 gxps01 ibus10 \
+        gupnpdlna20 gupnpdlnagst20 gvc10 gweather30 gxps01 handy1 ibus10 \
         javascriptcore40 json10 keybinder30 meta7 nm10 notify07 pango10 \
         pangocairo10 pangoft210 pangoxft10 peas10 peasgtk10 polkit10 \
         polkitagent10 poppler018 rest07 restextras07 rsvg20 secret1 shell01 \
