@@ -32,6 +32,7 @@ COPY lib/docs/scrapers/gnome/girs/mutter-3 /usr/lib64/mutter-3
 COPY lib/docs/scrapers/gnome/girs/mutter-4 /usr/lib64/mutter-4
 COPY lib/docs/scrapers/gnome/girs/mutter-5 /usr/lib64/mutter-5
 COPY lib/docs/scrapers/gnome/girs/mutter-6 /usr/lib64/mutter-6
+COPY lib/docs/scrapers/gnome/girs/Wp-0.3.gir /usr/share/gir-1.0/
 
 COPY . /opt/devdocs/
 WORKDIR /opt/devdocs
@@ -70,7 +71,7 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         polkitagent10 poppler018 rest07 restextras07 rsvg20 secret1 shell01 \
         soup24 soupgnome24 st10 telepathyglib012 tracker20 trackercontrol20 \
         trackerminer20 upowerglib10 vte00 vte291 webkit240 \
-        webkit2webextension40 zpj00 \
+        webkit2webextension40 wp03 zpj00 \
         cally3 clutter3 clutterx113 cogl3 coglpango3 meta3 \
         cally4 clutter4 clutterx114 cogl4 coglpango4 meta4 \
         cally5 clutter5 clutterx115 cogl5 coglpango5 meta5 \
