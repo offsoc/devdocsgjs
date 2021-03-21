@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.7.2'
+ruby '3.0.0'
 
 gem 'rake'
+gem 'rexml'
 gem 'thor'
 gem 'pry', '~> 0.12.0'
 gem 'activesupport', '~> 5.2', require: false
