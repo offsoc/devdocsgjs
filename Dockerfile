@@ -104,7 +104,7 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
 # - Copy from the build-stage image instead of the current dir
 # - Download only the css and javascript docsets instead of everything
 
-FROM ruby:2.7.2-alpine
+FROM docker.io/library/ruby:2.7.2-alpine
 
 ENV LANG=C.UTF-8
 
