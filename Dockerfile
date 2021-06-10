@@ -8,7 +8,7 @@ ENV LC_ALL en_US.UTF-8
 # Build dependencies and GIR packages
 RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
     dnf builddep -y ruby && \
-    dnf install -y python3-markdown \
+    dnf install -y ruby-devel python3-markdown \
         NetworkManager-libnm-devel cairo-devel cheese-libs-devel \
         clutter-{gst3,gtk}-devel evince-devel folks-devel geoclue2-devel \
         geocode-glib-devel glib2-devel gnome-bluetooth-libs-devel \
@@ -27,11 +27,19 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
     dnf clean all && \
     rm -rf /var/cache/yum
 
-# Get rbenv and ruby-build in order to install the particular version of Ruby
-# that Devdocs needs
-RUN git clone git://github.com/sstephenson/rbenv.git /root/.rbenv
-RUN git clone git://github.com/sstephenson/ruby-build.git /root/.rbenv/plugins/ruby-build
-ENV PATH /root/.rbenv/shims:/root/.rbenv/bin:/root/.rbenv/plugins/ruby-build/bin:$PATH
+SHELL ["/bin/bash", "-c", "-l"]
+
+# Install RVM to manage Ruby version
+RUN curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
+RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -
+RUN curl -L get.rvm.io | bash -s stable
+RUN source /etc/profile.d/rvm.sh
+RUN rvm requirements run
+RUN rvm install 2.7.2
+RUN rvm reload
+RUN rvm use 2.7.2 --default
+RUN rvm list
+RUN ruby -v
 
 # These are extra GIRs we can't install with dnf
 COPY lib/docs/scrapers/gnome/girs/GtkosxApplication-1.0.gir /usr/share/gir-1.0/
@@ -48,9 +56,9 @@ COPY lib/docs/scrapers/gnome/girs/mutter-7 /usr/lib64/mutter-7
 
 COPY . /opt/devdocs/
 WORKDIR /opt/devdocs
-RUN rbenv install
 RUN gem install bundler
-RUN bundle install --deployment
+RUN bundle config set --local deployment 'true'
+RUN bundle install
 
 RUN bundle exec thor gir:generate_all /usr/share/gir-1.0
 RUN bundle exec thor gir:generate_all /usr/lib64/mutter-3
