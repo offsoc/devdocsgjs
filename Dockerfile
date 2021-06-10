@@ -8,7 +8,7 @@ ENV LC_ALL en_US.UTF-8
 # Build dependencies and GIR packages
 RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
     dnf builddep -y ruby && \
-    dnf install -y ruby-devel python3-markdown \
+    dnf install -y bison ruby-devel python3-markdown \
         NetworkManager-libnm-devel cairo-devel cheese-libs-devel \
         clutter-{gst3,gtk}-devel evince-devel folks-devel geoclue2-devel \
         geocode-glib-devel glib2-devel gnome-bluetooth-libs-devel \
@@ -34,12 +34,11 @@ RUN curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
 RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -
 RUN curl -L get.rvm.io | bash -s stable
 RUN source /etc/profile.d/rvm.sh
+RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
 RUN rvm requirements run
 RUN rvm install 2.7.2
 RUN rvm reload
 RUN rvm use 2.7.2 --default
-RUN rvm list
-RUN ruby -v
 
 # These are extra GIRs we can't install with dnf
 COPY lib/docs/scrapers/gnome/girs/GtkosxApplication-1.0.gir /usr/share/gir-1.0/
