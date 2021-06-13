@@ -1,14 +1,7 @@
-FROM fedora:34 AS build
+# We bump this each release to fetch the latest stable GIRs
+FROM fedora:34 AS fetch
 
-RUN dnf install -y glibc-langpack-en
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
-
-# Build dependencies and GIR packages
-RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
-    dnf builddep -y ruby && \
-    dnf install -y bison ruby-devel python3-markdown \
+RUN dnf install -y \
         NetworkManager-libnm-devel cairo-devel cheese-libs-devel \
         clutter-{gst3,gtk}-devel evince-devel folks-devel geoclue2-devel \
         geocode-glib-devel glib2-devel gnome-bluetooth-libs-devel \
@@ -27,18 +20,14 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
     dnf clean all && \
     rm -rf /var/cache/yum
 
-SHELL ["/bin/bash", "-c", "-l"]
 
-# Install RVM to manage Ruby version
-RUN curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
-RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -
-RUN curl -L get.rvm.io | bash -s stable
-RUN source /etc/profile.d/rvm.sh
-RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
-RUN rvm requirements run
-RUN rvm install 2.7.2
-RUN rvm reload
-RUN rvm use 2.7.2 --default
+# We build in fedora:33 for the ruby dependency
+FROM fedora:33 AS build
+
+# These are GIRs from the fetch step
+COPY --from=fetch /usr/share/gir-1.0 /usr/share/gir-1.0
+COPY --from=fetch /usr/share/gnome-shell /usr/share/gnome-shell
+COPY --from=fetch /usr/lib64/mutter-8 /usr/lib64/mutter-8
 
 # These are extra GIRs we can't install with dnf
 COPY lib/docs/scrapers/gnome/girs/GtkosxApplication-1.0.gir /usr/share/gir-1.0/
@@ -53,12 +42,27 @@ COPY lib/docs/scrapers/gnome/girs/mutter-5 /usr/lib64/mutter-5
 COPY lib/docs/scrapers/gnome/girs/mutter-6 /usr/lib64/mutter-6
 COPY lib/docs/scrapers/gnome/girs/mutter-7 /usr/lib64/mutter-7
 
+# Install devdocs dependencies
+RUN dnf install -y glibc-langpack-en
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
+RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
+    dnf builddep -y ruby && \
+    dnf install -y ruby rubygem-bundler ruby-devel python3-markdown \
+                   gobject-introspection-devel && \
+    dnf clean all && \
+    rm -rf /var/cache/yum
+
+# Install the devdocs application
 COPY . /opt/devdocs/
 WORKDIR /opt/devdocs
-RUN gem install bundler
+
 RUN bundle config set --local deployment 'true'
 RUN bundle install
 
+# Generate scrapers
 RUN bundle exec thor gir:generate_all /usr/share/gir-1.0
 RUN bundle exec thor gir:generate_all /usr/lib64/mutter-3
 RUN bundle exec thor gir:generate_all /usr/lib64/mutter-4
@@ -72,6 +76,11 @@ RUN bundle exec thor gir:generate /usr/share/gnome-shell/Gvc-1.0.gir
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-0.1.gir --include /usr/lib64/mutter-8
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /usr/lib64/mutter-8
 
+# Build docsets
+#
+# Intentionally omitted:
+# dbus10, dbusglib10, fontconfig20, freetype220, gdkpixdata20, gl10, libxml220,
+#   win3210, xfixes40, xft20, xlib20, xrandr13
 RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally10 cally8 camel12 champlain012 cheese30 clutter10 clutter8 \
         cluttergdk10 cluttergst30 clutterx1110 clutterx118 cogl10 cogl20 cogl8 \
@@ -101,17 +110,16 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally7 clutter7 clutterx117 cogl7 coglpango7 meta7; \
       do echo $docset; bundle exec thor docs:generate $docset --force; done
 
-# Intentionally omitted:
-# dbus10, dbusglib10, fontconfig20, freetype220, gdkpixdata20, gl10, libxml220,
-#   win3210, xfixes40, xft20, xlib20, xrandr13
 
-# Keep this part in sync with Dockerfile-alpine
-# Changes:
-# - Ruby 2.6.0 -> 2.6.5
+# We deploy in ruby:2.7.3-alpine for size
+#
+# Changes from Dockerfile-alpine:
+# - Ruby 2.6.0 -> 2.7.3
 # - Copy from the build-stage image instead of the current dir
-# - Download only the css and javascript docsets instead of everything
-
-FROM docker.io/library/ruby:2.7.2-alpine
+# - Update bundler CLI usage
+# - The css and javascript docsets don't resolve and have been removed
+# - User permission fixes
+FROM docker.io/library/ruby:2.7.3-alpine
 
 ENV LANG=C.UTF-8
 
@@ -124,7 +132,6 @@ RUN apk --update add nodejs build-base libstdc++ gzip git zlib-dev && \
     bundle config set system 'true' && \
     bundle config set without 'test' && \
     bundle install && \
-    thor docs:download css javascript && \
     thor assets:compile && \
     apk del gzip build-base git zlib-dev && \
     rm -rf /var/cache/apk/* /tmp ~/.gem /root/.bundle/cache \
@@ -135,3 +142,4 @@ RUN chmod -R 775 /devdocs
 RUN chown -R rbuser:root /devdocs
 EXPOSE 9292
 CMD bundle exec rackup -o 0.0.0.0
+
