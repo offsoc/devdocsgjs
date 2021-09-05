@@ -9,7 +9,7 @@ RUN dnf install -y \
         gom-devel graphene-devel grilo-devel gsettings-desktop-schemas-devel \
         gsound-devel gspell-devel \
         gstreamer1-{,plugins-base-,plugins-bad-free-}devel gtk{2,3,4}-devel \
-        gtksourceview3-devel gupnp-devel gupnp-dlna-devel harfbuzz-devel \
+        gtksourceview{3,4}-devel gupnp-devel gupnp-dlna-devel harfbuzz-devel \
         ibus-devel keybinder3-devel libappindicator-gtk3-devel \
         libappstream-glib-devel libchamplain-devel libgcab1-devel \
         libgdata-devel libgda-devel libgudev-devel libgweather-devel \
@@ -95,9 +95,9 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         gstcodecs10 gstcontroller10 gstgl10 gstinsertbin10 gstmpegts10 \
         gstnet10 gstpbutils10 gstplayer10 gstrtp10 gstrtsp10 gstsdp10 gsttag10 \
         gstvideo10 gstvulkan10 gstwebrtc10 gtk20 gtk30 gtk40 gtkchamplain012 \
-        gtkclutter10 gtkosxapplication10 gtksource30 gudev10 gupnp10 \
-        gupnpdlna20 gupnpdlnagst20 gvc10 gweather30 gxps01 handy1 ibus10 \
-        javascriptcore40 json10 keybinder30 meta8 nm10 notify07 pango10 \
+        gtkclutter10 gtkosxapplication10 gtksource30 gtksource40 gudev10 \
+        gupnp10 gupnpdlna20 gupnpdlnagst20 gvc10 gweather30 gxps01 handy1 \
+        ibus10 javascriptcore40 json10 keybinder30 meta8 nm10 notify07 pango10 \
         pangocairo10 pangoft210 pangoxft10 peas10 peasgtk10 polkit10 \
         polkitagent10 poppler018 rest07 restextras07 rsvg20 secret1 shell01 \
         soup24 soupgnome24 st10 telepathyglib012 tracker20 tracker30 \
