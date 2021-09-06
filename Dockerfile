@@ -111,15 +111,15 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
       do echo $docset; bundle exec thor docs:generate $docset --force; done
 
 
-# We deploy in ruby:2.7.3-alpine for size
+# We deploy in ruby:2.7.4-alpine for size
 #
 # Changes from Dockerfile-alpine:
-# - Ruby 2.6.0 -> 2.7.3
+# - Ruby 2.6.0 -> 2.7.4
 # - Copy from the build-stage image instead of the current dir
 # - Update bundler CLI usage
 # - The css and javascript docsets don't resolve and have been removed
 # - User permission fixes
-FROM docker.io/library/ruby:2.7.3-alpine
+FROM docker.io/library/ruby:2.7.4-alpine
 
 ENV LANG=C.UTF-8
 
