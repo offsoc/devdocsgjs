@@ -1,5 +1,9 @@
 [
   [
+    "2021-10-29",
+    "Applied upstream changes to replace the AppCache with a Service Worker (which makes DevDocsGJS an installable PWA) and fixe layout preferences on Firefox."
+  ],
+  [
     "2018-09-23",
     "New documentations: <a href=\"/puppeteer/\">Puppeteer</a> and <a href=\"/handlebars/\">Handlebars.js</a>"
   ], [
