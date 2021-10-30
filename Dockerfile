@@ -122,6 +122,7 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
 FROM docker.io/library/ruby:2.7.3-alpine
 
 ENV LANG=C.UTF-8
+ENV ENABLE_SERVICE_WORKER=true
 
 WORKDIR /devdocs
 
