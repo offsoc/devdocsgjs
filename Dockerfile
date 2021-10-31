@@ -1,5 +1,5 @@
 # We bump this each release to fetch the latest stable GIRs
-FROM fedora:34 AS fetch
+FROM fedora:35 AS fetch
 
 RUN dnf install -y \
         NetworkManager-libnm-devel cairo-devel cheese-libs-devel \
@@ -16,7 +16,8 @@ RUN dnf install -y \
         libgxps-devel libhandy1-devel libnotify-devel libpeas-devel \
         librsvg2-devel libsecret-devel libzapojit-devel mutter pango-devel \
         polkit-devel poppler-glib-devel rest-devel telepathy-glib-devel \
-        tracker-devel udisks-devel upower-devel vte{,291}-devel && \
+        tracker-devel udisks-devel upower-devel vte{,291}-devel \
+        wireplumber-devel && \
     dnf clean all && \
     rm -rf /var/cache/yum
 
@@ -27,7 +28,7 @@ FROM fedora:33 AS build
 # These are GIRs from the fetch step
 COPY --from=fetch /usr/share/gir-1.0 /usr/share/gir-1.0
 COPY --from=fetch /usr/share/gnome-shell /usr/share/gnome-shell
-COPY --from=fetch /usr/lib64/mutter-8 /usr/lib64/mutter-8
+COPY --from=fetch /usr/lib64/mutter-9 /usr/lib64/mutter-9
 
 # These are extra GIRs we can't install with dnf
 COPY lib/docs/scrapers/gnome/girs/GtkosxApplication-1.0.gir /usr/share/gir-1.0/
@@ -41,6 +42,7 @@ COPY lib/docs/scrapers/gnome/girs/mutter-4 /usr/lib64/mutter-4
 COPY lib/docs/scrapers/gnome/girs/mutter-5 /usr/lib64/mutter-5
 COPY lib/docs/scrapers/gnome/girs/mutter-6 /usr/lib64/mutter-6
 COPY lib/docs/scrapers/gnome/girs/mutter-7 /usr/lib64/mutter-7
+COPY lib/docs/scrapers/gnome/girs/mutter-8 /usr/lib64/mutter-8
 
 # Install devdocs dependencies
 RUN dnf install -y glibc-langpack-en
@@ -70,6 +72,7 @@ RUN bundle exec thor gir:generate_all /usr/lib64/mutter-5
 RUN bundle exec thor gir:generate_all /usr/lib64/mutter-6
 RUN bundle exec thor gir:generate_all /usr/lib64/mutter-7
 RUN bundle exec thor gir:generate_all /usr/lib64/mutter-8
+RUN bundle exec thor gir:generate_all /usr/lib64/mutter-9
 
 # Some of the gnome-shell GIRs need extra include paths
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/Gvc-1.0.gir
@@ -107,7 +110,8 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally4 clutter4 clutterx114 cogl4 coglpango4 meta4 \
         cally5 clutter5 clutterx115 cogl5 coglpango5 meta5 \
         cally6 clutter6 clutterx116 cogl6 coglpango6 meta6 \
-        cally7 clutter7 clutterx117 cogl7 coglpango7 meta7; \
+        cally7 clutter7 clutterx117 cogl7 coglpango7 meta7 \
+        cally8 clutter8 clutterx118 cogl8 coglpango8 meta8; \
       do echo $docset; bundle exec thor docs:generate $docset --force; done
 
 
