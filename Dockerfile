@@ -1,6 +1,11 @@
 # We bump this each release to fetch the latest stable GIRs
 FROM fedora:35 AS fetch
 
+# clone3 workaround by Akihiro Suda
+ADD https://github.com/AkihiroSuda/clone3-workaround/releases/download/v1.0.0/clone3-workaround.x86_64 /clone3-workaround
+RUN chmod 755 /clone3-workaround
+SHELL ["/clone3-workaround", "/bin/sh", "-c"]
+
 RUN dnf install -y \
         NetworkManager-libnm-devel cairo-devel cheese-libs-devel \
         clutter-{gst3,gtk}-devel evince-devel folks-devel geoclue2-devel \
