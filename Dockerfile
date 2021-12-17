@@ -80,8 +80,8 @@ RUN bundle exec thor gir:generate_all /usr/lib64/mutter-9
 
 # Some of the gnome-shell GIRs need extra include paths
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/Gvc-1.0.gir
-RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-0.1.gir --include /usr/lib64/mutter-8
-RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /usr/lib64/mutter-8
+RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-0.1.gir --include /usr/lib64/mutter-9
+RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /usr/lib64/mutter-9
 
 # Build docsets
 #
