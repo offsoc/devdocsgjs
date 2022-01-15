@@ -92,18 +92,18 @@ RUN for docset in appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally10 cally9 camel12 champlain012 cheese30 clutter10 clutter9 \
         cluttergdk10 cluttergst30 clutterx1110 clutterx119 cogl10 cogl20 cogl9 \
         coglpango10 coglpango20 coglpango9 dbusmenu04 ebook12 ebookcontacts12 \
-        edataserver12 edataserverui12 evincedocument30 evinceview30 folks06 \
-        folksdummy06 folkseds06 folkstelepathy06 gcab10 gck1 gcr3 gcrui3 \
+        edataserver12 edataserverui12 evincedocument30 evinceview30 folks07 \
+        folksdummy07 folkseds07 folkstelepathy07 gcab10 gck1 gcr3 gcrui3 \
         gda50 gdata00 gdesktopenums30 gdk20 gdk30 gdk40 gdkpixbuf20 gdkx1120 \
         gdkx1130 gdkx1140 gee08 geoclue20 geocodeglib10 gio20 girepository20 \
         glib20 gnomebluetooth10 goa10 gobject20 gom10 graphene10 grl03 \
-        grlnet03 grlpls03 gsk40 gsound10 gspell1 gssdp10 gst10 gstallocators10 \
+        grlnet03 grlpls03 gsk40 gsound10 gspell1 gssdp12 gst10 gstallocators10 \
         gstapp10 gstaudio10 gstbadaudio10 gstbase10 gstcheck10 gstcodecs10 \
         gstcontroller10 gstgl10 gstinsertbin10 gstmpegts10 gstnet10 \
         gstpbutils10 gstplayer10 gstrtp10 gstrtsp10 gstsdp10 gsttag10 \
         gstvideo10 gstvulkan10 gstwebrtc10 gtk20 gtk30 gtk40 gtkchamplain012 \
-        gtkclutter10 gtkosxapplication10 gtksource30 gtksource40 gudev10 \
-        gupnp10 gupnpdlna20 gupnpdlnagst20 gvc10 gweather30 gxps01 handy1 \
+        gtkclutter10 gtkosxapplication10 gtksource30 gtksource4 gudev10 \
+        gupnp12 gupnpdlna20 gupnpdlnagst20 gvc10 gweather30 gxps01 handy1 \
         ibus10 javascriptcore40 json10 keybinder30 meta9 nm10 notify07 pango10 \
         pangocairo10 pangoft210 pangoxft10 peas10 peasgtk10 polkit10 \
         polkitagent10 poppler018 rest07 restextras07 rsvg20 secret1 shell01 \
