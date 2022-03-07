@@ -183,25 +183,22 @@ html._theme-dark {
 
 /* GNOME-specific icons; put in a separate sprite to avoid merge conflicts. */
 /* Create the sprites with
-convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolution,generic,gnome,goa,gstreamer,gtk,ubuntu,webkit,x}/16.png +append assets/images/gnome-icons.png
-convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolution,generic,gnome,goa,gstreamer,gtk,ubuntu,webkit,x}/16@2x.png +append assets/images/gnome-icons@2x.png
+convert public/icons/docs/{adwaita,appstream,cairo,clutter,evince,evolution,generic,gnome,goa,gstreamer,gtk,ubuntu,webkit,x}/16.png +append assets/images/gnome-icons.png
+convert public/icons/docs/{adwaita,appstream,cairo,clutter,evince,evolution,generic,gnome,goa,gstreamer,gtk,ubuntu,webkit,x}/16@2x.png +append assets/images/gnome-icons@2x.png
 */
 %gnome-icons {
   background-image: image-url('gnome-icons.png');
-  background-size: 15rem 1rem;
+  background-size: 14rem 1rem;
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
   %gnome-icons { background-image: image-url('gnome-icons@2x.png'); }
 }
 
+._icon-adw1:before         { @extend %gnome-icons; background-position: 0 0; }
 ._icon-appstreamglib10:before
-                           { @extend %gnome-icons; background-position: 0 0; }
-._icon-cairo10:before      { @extend %gnome-icons; background-position: -1rem 0; }
-._icon-gtkchamplain012:before,
-._icon-champlain012:before { @extend %gnome-icons; background-position: -2rem 0; }
-._icon-cheese30:before     { @extend %gnome-icons; background-position: -3rem 0; }
-._icon-cally10:before,
+                           { @extend %gnome-icons; background-position: -1rem 0; }
+._icon-cairo10:before      { @extend %gnome-icons; background-position: -2rem 0; }
 ._icon-cally3:before,
 ._icon-cally4:before,
 ._icon-cally5:before,
@@ -209,7 +206,7 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-cally7:before,
 ._icon-cally8:before,
 ._icon-cally9:before,
-._icon-clutter10:before,
+._icon-cally10:before,
 ._icon-clutter3:before,
 ._icon-clutter4:before,
 ._icon-clutter5:before,
@@ -217,19 +214,16 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-clutter7:before,
 ._icon-clutter8:before,
 ._icon-clutter9:before,
+._icon-clutter10:before,
 ._icon-cluttergdk10:before,
 ._icon-cluttergst20:before,
 ._icon-cluttergst30:before,
-._icon-clutterx1110:before,
 ._icon-clutterx113:before,
 ._icon-clutterx114:before,
 ._icon-clutterx115:before,
 ._icon-clutterx116:before,
 ._icon-clutterx117:before,
 ._icon-clutterx118:before,
-._icon-clutterx119:before,
-._icon-cogl10:before,
-._icon-cogl20:before,
 ._icon-cogl3:before,
 ._icon-cogl4:before,
 ._icon-cogl5:before,
@@ -237,8 +231,8 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-cogl7:before,
 ._icon-cogl8:before,
 ._icon-cogl9:before,
+._icon-cogl10:before,
 ._icon-coglpango10:before,
-._icon-coglpango20:before,
 ._icon-coglpango3:before,
 ._icon-coglpango4:before,
 ._icon-coglpango5:before,
@@ -246,16 +240,16 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-coglpango7:before,
 ._icon-coglpango8:before,
 ._icon-coglpango9:before,
-._icon-gtkclutter10:before { @extend %gnome-icons; background-position: -4rem 0; }
+._icon-coglpango10:before { @extend %gnome-icons; background-position: -3rem 0; }
 ._icon-evincedocument30:before,
-._icon-evinceview30:before { @extend %gnome-icons; background-position: -5rem 0; }
+._icon-evinceview30:before { @extend %gnome-icons; background-position: -4rem 0; }
 ._icon-ecal20:before,
 ._icon-camel12:before,
 ._icon-ebook12:before,
 ._icon-ebookcontacts12:before,
 ._icon-edataserver12:before,
 ._icon-edataserverui12:before
-                           { @extend %gnome-icons; background-position: -6rem 0; }
+                           { @extend %gnome-icons; background-position: -5rem 0; }
 ._icon-dbus10:before,
 ._icon-fontconfig20:before,
 ._icon-freetype220:before,
@@ -266,14 +260,14 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-polkit10:before,
 ._icon-polkitagent10:before,
 ._icon-telepathyglib012:before,
-._icon-win3210:before      { @extend %gnome-icons; background-position: -7rem 0; }
+._icon-win3210:before      { @extend %gnome-icons; background-position: -6rem 0; }
 ._icon-atk10:before,
 ._icon-atspi20:before,
 ._icon-dbusglib10:before,
-._icon-folks06:before,
-._icon-folksdummy06:before,
-._icon-folkseds06:before,
-._icon-folkstelepathy06:before,
+._icon-folks07:before,
+._icon-folksdummy07:before,
+._icon-folkseds07:before,
+._icon-folkstelepathy07:before,
 ._icon-gcab10:before,
 ._icon-gck1:before,
 ._icon-gcr3:before,
@@ -302,12 +296,12 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-grlpls03:before,
 ._icon-gsound10:before,
 ._icon-gspell1:before,
-._icon-gssdp10:before,
+._icon-gssdp12:before,
 ._icon-gtkosxapplication10:before,
 ._icon-gtksource30:before,
 ._icon-gtksource40:before,
 ._icon-gudev10:before,
-._icon-gupnp10:before,
+._icon-gupnp12:before,
 ._icon-gupnpdlna20:before,
 ._icon-gupnpdlnagst20:before,
 ._icon-gvc10:before,
@@ -325,6 +319,7 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-meta7:before,
 ._icon-meta8:before,
 ._icon-meta9:before,
+._icon-meta10:before,
 ._icon-notify07:before,
 ._icon-pango10:before,
 ._icon-pangocairo10:before,
@@ -340,6 +335,7 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-shell01:before,
 ._icon-shellmenu01:before,
 ._icon-soup24:before,
+._icon-soup30:before,
 ._icon-soupgnome24:before,
 ._icon-st10:before,
 ._icon-tracker10:before,
@@ -354,14 +350,16 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-vte290:before,
 ._icon-vte291:before,
 ._icon-wp04:before,
-._icon-zpj00:before        { @extend %gnome-icons; background-position: -8rem 0; @extend %darkIconFix !optional; }
-._icon-goa10:before        { @extend %gnome-icons; background-position: -9rem 0; }
+._icon-xdp10:before        { @extend %gnome-icons; background-position: -7rem 0; @extend %darkIconFix !optional; }
+._icon-goa10:before        { @extend %gnome-icons; background-position: -8rem 0; }
 ._icon-gst10:before,
 ._icon-gstallocators10:before,
 ._icon-gstapp10:before,
 ._icon-gstaudio10:before,
+._icon-gstbadaudio10:before,
 ._icon-gstbase10:before,
 ._icon-gstcheck10:before,
+._icon-gstcodecs10:before,
 ._icon-gstcontroller10:before,
 ._icon-gstfft10:before,
 ._icon-gstgl10:before,
@@ -376,7 +374,8 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-gstsdp10:before,
 ._icon-gsttag10:before,
 ._icon-gstvideo10:before,
-._icon-gstwebrtc10:before   { @extend %gnome-icons; background-position: -10rem 0; }
+._icon-gstvulkan10:before,
+._icon-gstwebrtc10:before   { @extend %gnome-icons; background-position: -9rem 0; }
 ._icon-gdk20:before,
 ._icon-gdk30:before,
 ._icon-gdk40:before,
@@ -386,9 +385,9 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-gsk40:before,
 ._icon-gtk20:before,
 ._icon-gtk30:before,
-._icon-gtk40:before        { @extend %gnome-icons; background-position: -11rem 0; }
+._icon-gtk40:before        { @extend %gnome-icons; background-position: -10rem 0; }
 ._icon-appindicator301:before,
-._icon-dbusmenu04:before   { @extend %gnome-icons; background-position: -12rem 0; }
+._icon-dbusmenu04:before   { @extend %gnome-icons; background-position: -11rem 0; }
 ._icon-javascriptcore30:before,
 ._icon-javascriptcore40:before,
 ._icon-webkit2webextension30:before,
@@ -396,8 +395,8 @@ convert public/icons/docs/{appstream,cairo,champlain,cheese,clutter,evince,evolu
 ._icon-webkit10:before,
 ._icon-webkit230:before,
 ._icon-webkit240:before,
-._icon-webkit30:before     { @extend %gnome-icons; background-position: -13rem 0; }
+._icon-webkit30:before     { @extend %gnome-icons; background-position: -12rem 0; }
 ._icon-xfixes40:before,
 ._icon-xft20:before,
 ._icon-xlib20:before,
-._icon-xrandr13:before     { @extend %gnome-icons; background-position: -14rem 0; @extend %darkIconFix !optional; }
+._icon-xrandr13:before     { @extend %gnome-icons; background-position: -13rem 0; @extend %darkIconFix !optional; }

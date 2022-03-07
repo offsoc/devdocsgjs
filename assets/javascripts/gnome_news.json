@@ -1,5 +1,10 @@
 [
   [
+    "2022-03-06",
+    "New documentations: <a href='/adw1/'>Adwaita 1</a>, <a href='/cally10/'>Cally 10</a>, <a href='/clutter10/'>Clutter 10</a>, <a href='/cogl10/'>Cogl 10</a>, <a href='/coglpango10/'>CoglPango 10</a>, <a href='/gnomebluetooth30/'>GnomeBluetooth 3.0</a>, <a href='/meta10/'>Mutter 10</a>, <a href='/soup30/'>Soup 3.0</a>, <a href='/xdp10/'>Xdp (libportal Development)</a>",
+    "Removed documentations: Cally-1.0, Clutter-1.0, Cogl-1.0, Cogl-2.0, CoglPango-1.0, CoglPango-2.0, Champlain-0.12, Cheese-3.0, GtkClutter-1.0, Zapojit-0.3"
+  ],
+  [
     "2022-02-13",
     "New documentations: <a href='/ecal20/'>ECal 2.0</a>"
   ],
