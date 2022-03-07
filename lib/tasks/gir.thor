@@ -92,7 +92,7 @@ class GirCLI < Thor
       version = determine_version gir
       version = guess_version gir if version.nil?
       api_version = scraper_info[:api_version] + ' API'
-      version = api_version if version.nil? || api_version[0] > version[0]
+      version = api_version if version.nil? || api_version[0..1] > version[0..1]
       version
     end
 
