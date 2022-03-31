@@ -55,7 +55,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
+RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ make && \
     dnf builddep -y ruby && \
     dnf install -y ruby rubygem-bundler ruby-devel python3-markdown \
                    gobject-introspection-devel && \
