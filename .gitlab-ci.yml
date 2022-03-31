@@ -1,0 +1,7 @@
+include:
+  - project: 'Infrastructure/openshift-images/ci-templates'
+    file: '/kaniko.yml'
+
+devdocsgjs:
+  extends:
+    - .kaniko-root
