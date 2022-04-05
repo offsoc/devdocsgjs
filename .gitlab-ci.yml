@@ -1,6 +1,6 @@
 include:
   - project: 'Infrastructure/openshift-images/ci-templates'
-    file: '/kaniko.yml'
+    file: '/buildah.yml'
 
 devdocsgjs:
   extends:
