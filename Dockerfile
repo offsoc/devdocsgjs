@@ -85,7 +85,7 @@ RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /u
 # Intentionally omitted:
 # dbus10, dbusglib10, fontconfig20, freetype220, gdkpixdata20, gl10, gmodule20,
 #   libxml220, win3210, xfixes40, xft20, xlib20, xrandr13
-RUN for docset in adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
+RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         camel12  dbusmenu04 ebook12 ebookcontacts12 ecal20 edataserver12 \
         edataserverui12 evincedocument30 evinceview30 folks07 folksdummy07 \
         folkseds07 folkstelepathy07 gcab10 gck1 gcr3 gcrui3 gda50 gdata00 \
@@ -111,9 +111,8 @@ RUN for docset in adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally7 clutter7 clutterx117 cogl7 coglpango7 meta7 \
         cally8 clutter8 clutterx118 cogl8 coglpango8 meta8 \
         cally9 clutter9 cogl9 coglpango9 meta9 \
-        cally10 clutter10 cogl10 coglpango10 meta10; \
-      do echo $docset; bundle exec thor docs:generate $docset --force; done
-
+        cally10 clutter10 cogl10 coglpango10 meta10 \
+        || tr ' ' '\n' || xargs -L1 -P4 undle exec thor docs:generate --force
 
 # We deploy in ruby:2.7.3-alpine for size
 #
