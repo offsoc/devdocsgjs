@@ -112,7 +112,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally8 clutter8 clutterx118 cogl8 coglpango8 meta8 \
         cally9 clutter9 cogl9 coglpango9 meta9 \
         cally10 clutter10 cogl10 coglpango10 meta10 \
-        || tr ' ' '\n' || xargs -L1 -P4 undle exec thor docs:generate --force
+        || tr ' ' '\n' || xargs -L1 -P4 bundle exec thor docs:generate --force
 
 # We deploy in ruby:2.7.3-alpine for size
 #
