@@ -1,11 +1,6 @@
 # We bump this each release to fetch the latest stable GIRs
 FROM registry.fedoraproject.org/fedora:36 AS fetch
 
-# clone3 workaround by Akihiro Suda
-ADD https://github.com/AkihiroSuda/clone3-workaround/releases/download/v1.0.0/clone3-workaround.x86_64 /clone3-workaround
-RUN chmod 755 /clone3-workaround
-SHELL ["/clone3-workaround", "/bin/sh", "-c"]
-
 RUN dnf install -y \
         NetworkManager-libnm-devel cairo-devel evince-devel folks-devel \
         geoclue2-devel geocode-glib-devel glib2-devel \
