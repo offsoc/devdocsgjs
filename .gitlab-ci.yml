@@ -4,4 +4,4 @@ include:
 
 devdocsgjs:
   extends:
-    - .kaniko-root
+    - .buildah
