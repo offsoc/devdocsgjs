@@ -24,6 +24,8 @@ RUN dnf install -y \
 # We build in fedora:33 for the ruby dependency
 FROM registry.fedoraproject.org/fedora:33 AS build
 
+ENV LANG=C.UTF-8
+
 # These are GIRs from the fetch step
 COPY --from=fetch /usr/share/gir-1.0 /usr/share/gir-1.0
 COPY --from=fetch /usr/share/gnome-shell /usr/share/gnome-shell
@@ -45,11 +47,6 @@ COPY lib/docs/scrapers/gnome/girs/mutter-8 /usr/lib64/mutter-8
 COPY lib/docs/scrapers/gnome/girs/mutter-9 /usr/lib64/mutter-9
 
 # Install devdocs dependencies
-RUN dnf install -y glibc-langpack-en
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
-
 RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
     dnf builddep -y ruby && \
     dnf install -y ruby rubygem-bundler ruby-devel python3-markdown \
