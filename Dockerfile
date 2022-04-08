@@ -117,6 +117,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
 # - Ruby 2.6.0 -> 2.7.5
 # - Copy from the build-stage image instead of the current dir
 # - Update bundler CLI usage
+# - Remove `thor compile:assets` until we run in production mode (TODO)
 # - The css and javascript docsets don't resolve and have been removed
 # - User permission fixes
 FROM docker.io/library/ruby:2.7.5-alpine
@@ -133,7 +134,6 @@ RUN apk --update add nodejs build-base libstdc++ gzip git zlib-dev libcurl && \
     bundle config set system 'true' && \
     bundle config set without 'test' && \
     bundle install && \
-    thor assets:compile && \
     apk del gzip build-base git zlib-dev && \
     rm -rf /var/cache/apk/* /tmp ~/.gem /root/.bundle/cache \
     /usr/local/bundle/cache /usr/lib/node_modules
