@@ -82,6 +82,29 @@ class SpritesCLI < Thor
     end
   end
 
+  # Redefine to avoid merge conflicts
+  def get_items
+    manifest = JSON.parse(File.read('assets/images/gnome-icons.json'))
+
+    icons = {}
+    manifest.map do |icon, patterns|
+      patterns.map {|pattern| icons[Regexp.new(pattern)] = icon}
+    end
+
+    items = Docs.all.map do |doc|
+      slug = doc.slug.split('~')[0]
+      icon = icons.detect {|key,value| key.match(slug)}
+      name = icon ? icon[1] : 'gnome'
+      base_path = "public/icons/docs/#{name}"
+      {
+        :type => slug,
+        :path_16 => "#{base_path}/16.png",
+        :path_32 => "#{base_path}/16@2x.png",
+        :has_icons => true
+      }
+    end
+  end
+
   def get_icon(path, max_size)
     icon = ChunkyPNG::Image.from_file(path)
 
