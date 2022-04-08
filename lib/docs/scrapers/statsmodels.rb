@@ -21,5 +21,8 @@ module Docs
       Licensed under the 3-clause BSD License.
     HTML
 
+    def get_latest_version(opts)
+      get_latest_github_release('statsmodels', 'statsmodels', opts)
+    end
   end
 end

@@ -14,6 +14,8 @@ class app.views.Mobile extends app.View
     after: 'afterRoute'
 
   @detect: ->
+    if Cookies.get('override-mobile-detect')?
+      return JSON.parse Cookies.get('override-mobile-detect')
     try
       (window.matchMedia('(max-width: 480px)').matches) or
       (window.matchMedia('(max-width: 767px)').matches) or
@@ -36,8 +38,6 @@ class app.views.Mobile extends app.View
     super
 
   init: ->
-    window.FastClick?.attach @body
-
     $.on $('._search'), 'touchend', @onTapSearch
 
     @toggleSidebar = $('button[data-toggle-sidebar]')

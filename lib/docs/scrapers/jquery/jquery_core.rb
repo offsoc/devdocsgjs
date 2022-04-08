@@ -1,7 +1,7 @@
 module Docs
   class JqueryCore < Jquery
     self.name = 'jQuery'
-    self.release = '3.3.1'
+    self.release = '3.6.0'
     self.base_url = 'https://api.jquery.com/'
     self.initial_paths = %w(/index/index)
     self.links = {
@@ -22,5 +22,9 @@ module Docs
       /Selectors\/odd/i,
       /index/i
     ]
+
+    def get_latest_version(opts)
+      get_npm_version('jquery', opts)
+    end
   end
 end

@@ -18,5 +18,10 @@ module Docs
       &copy; 2018 HashiCorp</br>
       Licensed under the MPL 2.0 License.
     HTML
+
+    def get_latest_version(opts)
+      contents = get_latest_github_release('hashicorp', 'terraform', opts)
+      contents.sub("v", "")
+    end
   end
 end

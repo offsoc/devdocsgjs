@@ -5,24 +5,27 @@ module Docs
         if subpath.start_with?('api')
           breadcrumbs[1..-1].join('.')
         else
-          (at_css('h1') || at_css('h2')).content
+          node = (at_css('h1') || at_css('h2'))
+          return [breadcrumbs[1..], [node.content]].flatten.join(': ') unless node.nil?
         end
       end
 
       def get_type
         if subpath.start_with?('api')
           breadcrumbs[1]
-        elsif subpath.start_with?('docs/tutorials')
-          'Tutorials'
-        elsif subpath.start_with?('docs/reference')
-          'Reference'
+        else
+          breadcrumbs[0]
         end
       end
 
       private
 
       def breadcrumbs
-        @breadcrumbs ||= css('.api-docs-breadcrumbs a').map(&:content).map(&:strip)
+        if subpath.start_with?('api')
+          @breadcrumbs ||= css('.api-docs-breadcrumbs a').map(&:content).map(&:strip)
+        else
+          @breadcrumbs ||= doc.document.at_css('body')['data-breadcrumbs'].split('///')
+        end 
       end
     end
   end

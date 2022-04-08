@@ -3,7 +3,7 @@ module Docs
     self.name = 'Apache HTTP Server'
     self.slug = 'apache_http_server'
     self.type = 'apache'
-    self.release = '2.4.37'
+    self.release = '2.4.52'
     self.base_url = 'https://httpd.apache.org/docs/2.4/en/'
     self.links = {
       home: 'https://httpd.apache.org/'
@@ -33,5 +33,10 @@ module Docs
       &copy; 2018 The Apache Software Foundation<br>
       Licensed under the Apache License, Version 2.0.
     HTML
+
+    def get_latest_version(opts)
+      doc = fetch_doc('http://httpd.apache.org/download', opts)
+      doc.at_css('#apcontents li > a').content
+    end
   end
 end

@@ -22,5 +22,9 @@ module Docs
       &copy; JS Foundation and other contributors<br>
       Licensed under the MIT License.
     HTML
+
+    def get_latest_version(opts)
+      get_github_tags('moment', 'moment', opts)[0]['name']
+    end
   end
 end

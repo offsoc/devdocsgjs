@@ -3,10 +3,11 @@ module Docs
     prepend FixInternalUrlsBehavior
     prepend FixRedirectionsBehavior
 
+    # release = '2022-01-09'
     self.name = 'JavaScript'
     self.base_url = 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference'
 
-    html_filters.push 'javascript/clean_html', 'javascript/entries', 'title'
+    html_filters.push 'javascript/clean_html', 'javascript/entries'
 
     options[:root_title] = 'JavaScript'
 

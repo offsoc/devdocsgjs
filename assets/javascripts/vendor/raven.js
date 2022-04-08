@@ -856,7 +856,7 @@ Raven.prototype = {
   },
 
   _triggerEvent: function(eventType, options) {
-    // NOTE: `event` is a native browser thing, so let's avoid conflicting wiht it
+    // NOTE: `event` is a native browser thing, so let's avoid conflicting with it
     var evt, key;
 
     if (!this._hasDocument) return;
@@ -2222,7 +2222,7 @@ function urlencode(o) {
   return pairs.join('&');
 }
 
-// borrowed from https://tools.ietf.org/html/rfc3986#appendix-B
+// borrowed from https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
 // intentionally using regex and not <a/> href parsing trick because React Native and other
 // environments where DOM might not be available
 function parseUrl(url) {

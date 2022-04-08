@@ -111,15 +111,15 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally10 clutter10 cogl10 coglpango10 meta10 \
         | tr ' ' '\n' | xargs -L1 -P$(nproc) bundle exec thor docs:generate --force
 
-# We deploy in ruby:2.7.3-alpine for size
+# We deploy in ruby:2.7.5-alpine for size
 #
 # Changes from Dockerfile-alpine:
-# - Ruby 2.6.0 -> 2.7.3
+# - Ruby 2.6.0 -> 2.7.5
 # - Copy from the build-stage image instead of the current dir
 # - Update bundler CLI usage
 # - The css and javascript docsets don't resolve and have been removed
 # - User permission fixes
-FROM docker.io/library/ruby:2.7.3-alpine
+FROM docker.io/library/ruby:2.7.5-alpine
 
 ENV LANG=C.UTF-8
 ENV ENABLE_SERVICE_WORKER=true
@@ -128,7 +128,7 @@ WORKDIR /devdocs
 
 COPY --from=build /opt/devdocs /devdocs
 
-RUN apk --update add nodejs build-base libstdc++ gzip git zlib-dev && \
+RUN apk --update add nodejs build-base libstdc++ gzip git zlib-dev libcurl && \
     gem install bundler && \
     bundle config set system 'true' && \
     bundle config set without 'test' && \

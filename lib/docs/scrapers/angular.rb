@@ -11,7 +11,7 @@ module Docs
     options[:max_image_size] = 256_000
 
     options[:attribution] = <<-HTML
-      &copy; 2010&ndash;2018 Google, Inc.<br>
+      &copy; 2010&ndash;2022 Google, Inc.<br>
       Licensed under the Creative Commons Attribution License 4.0.
     HTML
 
@@ -46,21 +46,171 @@ module Docs
       def handle_response(response)
         if response.mime_type.include?('json')
           begin
-            response.options[:response_body] = JSON.parse(response.body)['contents']
+            json = JSON.parse(response.body)
+            response.options[:response_body] = json['contents']
+            response.url.path = response.url.path.gsub(/generated\/docs\/.*/, json['id'])
+            response.effective_url.path = response.effective_url.path.gsub(/generated\/docs\/.*/, json['id'])
           rescue JSON::ParserError
             response.options[:response_body] = ''
           end
           response.headers['Content-Type'] = 'text/html'
-          response.url.path = response.url.path.sub('/generated/docs/', '/').remove('.json')
-          response.effective_url.path = response.effective_url.path.sub('/generated/docs/', '/').remove('.json')
         end
         super
       end
     end
 
+    module Since12
+      def url_for(path)
+        # See encodeToLowercase im aio/tools/transforms/angular-base-package/processors/disambiguateDocPaths.js
+        path = path.gsub(/[A-Z_]/) {|s| s.downcase + '_'}
+        super
+      end
+      include Docs::Angular::Common
+    end
+
     version do
-      self.release = '6.0.4'
+      self.release = '13.1.3'
       self.base_url = 'https://angular.io/'
+      self.root_path = 'docs'
+
+      html_filters.push 'angular/clean_html', 'angular/entries'
+
+      options[:follow_links] = false
+      options[:only_patterns] = [/\Aguide/, /\Atutorial/, /\Aapi/]
+      options[:fix_urls_before_parse] = ->(url) do
+        url.sub! %r{\Aguide/}, '/guide/'
+        url.sub! %r{\Atutorial/}, '/tutorial/'
+        url.sub! %r{\Aapi/}, '/api/'
+        url.sub! %r{\Agenerated/}, '/generated/'
+        url
+      end
+
+      include Docs::Angular::Since12
+    end
+
+    version '12' do
+      self.release = '12.2.13'
+      self.base_url = 'https://v12.angular.io/'
+      self.root_path = 'docs'
+
+      html_filters.push 'angular/clean_html', 'angular/entries'
+
+      options[:follow_links] = false
+      options[:only_patterns] = [/\Aguide/, /\Atutorial/, /\Aapi/]
+      options[:fix_urls_before_parse] = ->(url) do
+        url.sub! %r{\Aguide/}, '/guide/'
+        url.sub! %r{\Atutorial/}, '/tutorial/'
+        url.sub! %r{\Aapi/}, '/api/'
+        url.sub! %r{\Agenerated/}, '/generated/'
+        url
+      end
+
+      include Docs::Angular::Since12
+    end
+
+    version '11' do
+      self.release = '11.2.14'
+      self.base_url = 'https://v11.angular.io/'
+      self.root_path = 'docs'
+
+      html_filters.push 'angular/clean_html', 'angular/entries'
+
+      options[:follow_links] = false
+      options[:only_patterns] = [/\Aguide/, /\Atutorial/, /\Aapi/]
+      options[:fix_urls_before_parse] = ->(url) do
+        url.sub! %r{\Aguide/}, '/guide/'
+        url.sub! %r{\Atutorial/}, '/tutorial/'
+        url.sub! %r{\Aapi/}, '/api/'
+        url.sub! %r{\Agenerated/}, '/generated/'
+        url
+      end
+
+      include Docs::Angular::Common
+    end
+
+    version '10' do
+      self.release = '10.2.3'
+      self.base_url = 'https://v10.angular.io/'
+      self.root_path = 'docs'
+
+      html_filters.push 'angular/clean_html', 'angular/entries'
+
+      options[:follow_links] = false
+      options[:only_patterns] = [/\Aguide/, /\Atutorial/, /\Aapi/]
+      options[:fix_urls_before_parse] = ->(url) do
+        url.sub! %r{\Aguide/}, '/guide/'
+        url.sub! %r{\Atutorial/}, '/tutorial/'
+        url.sub! %r{\Aapi/}, '/api/'
+        url.sub! %r{\Agenerated/}, '/generated/'
+        url
+      end
+
+      include Docs::Angular::Common
+    end
+
+    version '9' do
+      self.release = '9.1.12'
+      self.base_url = 'https://v9.angular.io/'
+      self.root_path = 'docs'
+
+      html_filters.push 'angular/clean_html', 'angular/entries'
+
+      options[:follow_links] = false
+      options[:only_patterns] = [/\Aguide/, /\Atutorial/, /\Aapi/]
+      options[:fix_urls_before_parse] = ->(url) do
+        url.sub! %r{\Aguide/}, '/guide/'
+        url.sub! %r{\Atutorial/}, '/tutorial/'
+        url.sub! %r{\Aapi/}, '/api/'
+        url.sub! %r{\Agenerated/}, '/generated/'
+        url
+      end
+
+      include Docs::Angular::Common
+    end
+
+    version '8' do
+      self.release = '8.2.14'
+      self.base_url = 'https://v8.angular.io/'
+      self.root_path = 'docs'
+
+      html_filters.push 'angular/clean_html', 'angular/entries'
+
+      options[:follow_links] = false
+      options[:only_patterns] = [/\Aguide/, /\Atutorial/, /\Aapi/]
+      options[:fix_urls_before_parse] = ->(url) do
+        url.sub! %r{\Aguide/}, '/guide/'
+        url.sub! %r{\Atutorial/}, '/tutorial/'
+        url.sub! %r{\Aapi/}, '/api/'
+        url.sub! %r{\Agenerated/}, '/generated/'
+        url
+      end
+
+      include Docs::Angular::Common
+    end
+
+    version '7' do
+      self.release = '7.2.15'
+      self.base_url = 'https://v7.angular.io/'
+      self.root_path = 'docs'
+
+      html_filters.push 'angular/clean_html', 'angular/entries'
+
+      options[:follow_links] = false
+      options[:only_patterns] = [/\Aguide/, /\Atutorial/, /\Aapi/]
+      options[:fix_urls_before_parse] = ->(url) do
+        url.sub! %r{\Aguide/}, '/guide/'
+        url.sub! %r{\Atutorial/}, '/tutorial/'
+        url.sub! %r{\Aapi/}, '/api/'
+        url.sub! %r{\Agenerated/}, '/generated/'
+        url
+      end
+
+      include Docs::Angular::Common
+    end
+
+    version '6' do
+      self.release = '6.1.10'
+      self.base_url = 'https://v6.angular.io/'
       self.root_path = 'docs'
 
       html_filters.push 'angular/clean_html', 'angular/entries'
@@ -153,6 +303,10 @@ module Docs
         url.sub! %r{\A(https://(?:v2\.)?angular\.io/docs/.+/)index\.html\z}, '\1'
         url
       end
+    end
+
+    def get_latest_version(opts)
+      get_npm_version('@angular/core', opts)
     end
 
     private

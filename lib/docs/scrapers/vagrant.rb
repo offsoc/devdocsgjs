@@ -18,5 +18,9 @@ module Docs
       &copy; 2010&ndash;2018 Mitchell Hashimoto<br>
       Licensed under the MPL 2.0 License.
     HTML
+
+    def get_latest_version(opts)
+      get_github_tags('hashicorp', 'vagrant', opts)[0]['name'][1..-1]
+    end
   end
 end

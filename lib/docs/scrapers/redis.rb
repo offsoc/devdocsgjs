@@ -1,11 +1,11 @@
 module Docs
   class Redis < UrlScraper
     self.type = 'redis'
-    self.release = '5.0.0'
+    self.release = '6.2.1'
     self.base_url = 'https://redis.io/commands'
     self.links = {
       home: 'https://redis.io/',
-      code: 'https://github.com/antirez/redis'
+      code: 'https://github.com/redis/redis'
     }
 
     html_filters.push 'redis/entries', 'redis/clean_html', 'title'
@@ -16,8 +16,14 @@ module Docs
     options[:follow_links] = ->(filter) { filter.root_page? }
 
     options[:attribution] = <<-HTML
-      &copy; 2009&ndash;2018 Salvatore Sanfilippo<br>
+      &copy; 2009&ndash;2020 Salvatore Sanfilippo<br>
       Licensed under the Creative Commons Attribution-ShareAlike License 4.0.
     HTML
+
+    def get_latest_version(opts)
+      body = fetch('http://download.redis.io/redis-stable/00-RELEASENOTES', opts)
+      body = body.lines[1..-1].join
+      body.scan(/Redis ([0-9.]+)/)[0][0]
+    end
   end
 end

@@ -34,18 +34,43 @@ module Docs
       Licensed under the BSD License.
     HTML
 
+    version '4.0' do
+      self.release = '4.0'
+      self.base_url = 'https://docs.djangoproject.com/en/4.0/'
+    end
+
+    version '3.2' do
+      self.release = '3.2'
+      self.base_url = 'https://docs.djangoproject.com/en/3.2/'
+    end
+
+    version '3.1' do
+      self.release = '3.1.4'
+      self.base_url = 'https://docs.djangoproject.com/en/3.1/'
+    end
+
+    version '3.0' do
+      self.release = '3.0.11'
+      self.base_url = 'https://docs.djangoproject.com/en/3.0/'
+    end
+
+    version '2.2' do
+      self.release = '2.2.17'
+      self.base_url = 'https://docs.djangoproject.com/en/2.2/'
+    end
+
     version '2.1' do
-      self.release = '2.1.0'
+      self.release = '2.1.15'
       self.base_url = 'https://docs.djangoproject.com/en/2.1/'
     end
 
     version '2.0' do
-      self.release = '2.0.7'
+      self.release = '2.0.13'
       self.base_url = 'https://docs.djangoproject.com/en/2.0/'
     end
 
     version '1.11' do
-      self.release = '1.11.9'
+      self.release = '1.11.29'
       self.base_url = 'https://docs.djangoproject.com/en/1.11/'
     end
 
@@ -62,6 +87,11 @@ module Docs
     version '1.8' do
       self.release = '1.8.18'
       self.base_url = 'https://docs.djangoproject.com/en/1.8/'
+    end
+
+    def get_latest_version(opts)
+      doc = fetch_doc('https://docs.djangoproject.com/', opts)
+      doc.at_css('#doc-versions > li.current > span > strong').content
     end
   end
 end

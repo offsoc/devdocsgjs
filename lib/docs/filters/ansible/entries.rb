@@ -4,9 +4,17 @@ module Docs
       def get_name
         name = at_css('h1').content.strip
         name.remove! "\u{00B6}"
+        name.remove! "\u{f0c1}"
         name.remove! %r{ \- .*}
         name.remove! 'Introduction To '
         name.remove! %r{ Guide\z}
+
+        if version >= "2.10" || version == ""
+          if slug =~ /\Acollections\// and slug !~ /index$/
+            name = name.split('.')[2]
+          end
+        end
+
         name
       end
 
@@ -18,6 +26,12 @@ module Docs
             else
               return 'Modules'
             end
+          end
+        end
+
+        if version >= "2.10" || version == ""
+          if slug =~ /\Acollections\//
+            return "Collection #{slug.split('/')[1..-2].join(".")}"
           end
         end
 

@@ -5,25 +5,32 @@ module Docs
     self.type = 'vue'
     self.links = {
       home: 'https://vuejs.org/',
-      code: 'https://github.com/vuejs/vue'
+      code: 'https://github.com/vuejs/core'
     }
 
-    html_filters.push 'vue/entries', 'vue/clean_html'
-
-    options[:only_patterns] = [/guide\//, /api\//]
+    options[:only_patterns] = [/^$/ ,/guide\//, /api\//]
     options[:skip] = %w(guide/team.html)
+    options[:skip_patterns] = [/guide\/contributing/]
     options[:replace_paths] = { 'guide/' => 'guide/index.html' }
 
     options[:attribution] = <<-HTML
-      &copy; 2013&ndash;2018 Evan You, Vue.js contributors<br>
+      &copy; 2013&ndash;present Yuxi Evan You<br>
       Licensed under the MIT License.
     HTML
 
+    version '3' do
+      self.release = '3.2.31'
+      self.base_url = 'https://vuejs.org/'
+      self.initial_paths = %w(guide/introduction.html)
+      html_filters.push 'vue/entries_v3', 'vue/clean_html'
+    end
+
     version '2' do
-      self.release = '2.5.16'
-      self.base_url = 'https://vuejs.org/v2/'
+      self.release = '2.6.12'
+      self.base_url = 'https://v2.vuejs.org/'
       self.root_path = 'guide/index.html'
       self.initial_paths = %w(api/)
+      html_filters.push 'vue/entries', 'vue/clean_html'
     end
 
     version '1' do
@@ -31,6 +38,11 @@ module Docs
       self.base_url = 'https://v1.vuejs.org'
       self.root_path = '/guide/index.html'
       self.initial_paths = %w(/api/index.html)
+      html_filters.push 'vue/entries', 'vue/clean_html'
+    end
+
+    def get_latest_version(opts)
+      get_npm_version('vue', opts)
     end
   end
 end

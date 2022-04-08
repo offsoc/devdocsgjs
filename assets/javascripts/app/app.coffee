@@ -78,7 +78,7 @@
         .install()
       @previousErrorHandler = onerror
       window.onerror = @onWindowError.bind(@)
-      CookieStore.onBlocked = @onCookieBlocked
+      CookiesStore.onBlocked = @onCookieBlocked
     return
 
   bootOne: ->
@@ -257,7 +257,7 @@
         matchMedia:         !!window.matchMedia
         insertAdjacentHTML: !!document.body.insertAdjacentHTML
         defaultPrevented:     document.createEvent('CustomEvent').defaultPrevented is false
-        cssVariables:         CSS.supports and CSS.supports('(--t: 0)')
+        cssVariables:       !!CSS?.supports?('(--t: 0)')
 
       for key, value of features when not value
         Raven.captureMessage "unsupported/#{key}", level: 'info'

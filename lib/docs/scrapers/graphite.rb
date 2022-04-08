@@ -4,6 +4,7 @@ module Docs
     self.release = '1.1.4'
     self.base_url = 'https://graphite.readthedocs.io/en/latest/'
     self.links = {
+      home: 'https://graphiteapp.org/',
       code: 'https://github.com/graphite-project/graphite-web'
     }
 
@@ -17,5 +18,10 @@ module Docs
       &copy; 2011&ndash;2016 The Graphite Project<br>
       Licensed under the Apache License, Version 2.0.
     HTML
+
+    def get_latest_version(opts)
+      doc = fetch_doc('https://graphite.readthedocs.io/en/latest/releases.html', opts)
+      doc.at_css('#release-notes li > a').content
+    end
   end
 end

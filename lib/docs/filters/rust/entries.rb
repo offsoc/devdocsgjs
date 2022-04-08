@@ -1,13 +1,15 @@
 module Docs
   class Rust
     class EntriesFilter < Docs::EntriesFilter
+
       def get_name
         if slug.start_with?('book') || slug.start_with?('reference')
-          at_css("#sidebar a[href='#{File.basename(slug)}']").content
+          name = at_css("#sidebar a[href='#{File.basename(slug)}']")
+          name ? name.content : 'Introduction'
         elsif slug == 'error-index'
           'Compiler Errors'
         else
-          name = at_css('h1.fqn .in-band').content.remove(/\A.+\s/)
+          name = at_css('h1.fqn .in-band').content.remove(/\A.+\s/).remove('⎘')
           mod = slug.split('/').first
           name.prepend("#{mod}::") unless name.start_with?(mod)
           name
@@ -51,6 +53,7 @@ module Docs
             }.values
         end
       end
+
     end
   end
 end

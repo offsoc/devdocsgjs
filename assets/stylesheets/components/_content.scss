@@ -33,6 +33,11 @@
     margin-top: var(--headerHeight);
   }
 
+  ._text-justify-hyphenate & {
+    text-align: justify;
+    hyphens: auto;
+  }
+
   ._overlay-scrollbars & { padding-left: .625rem; }
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { margin-left: 0; }
   @supports (-ms-overflow-style: none) { margin-left: 0; }
@@ -377,7 +382,7 @@
 ._note-green { @extend %note-green; }
 ._label { @extend %label; }
 ._code { @extend %code; }
-._highlight { background: var(--highlightBackground) !important; }
+._highlight, ._highlight > td { background: var(--highlightBackground) !important; }
 
 ._table { width: 100%; }
 ._mobile ._table { overflow-x: auto; }

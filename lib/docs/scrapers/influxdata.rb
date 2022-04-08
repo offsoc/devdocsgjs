@@ -46,5 +46,9 @@ module Docs
       &copy; 2015 InfluxData, Inc.<br>
       Licensed under the MIT license.
     HTML
+
+    def get_latest_version(opts)
+      get_latest_github_release('influxdata', 'influxdb', opts)
+    end
   end
 end

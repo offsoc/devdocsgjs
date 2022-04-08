@@ -63,11 +63,23 @@ module Docs
       /\AXMP/]
 
     options[:attribution] = <<-HTML
-      Ruby Core &copy; 1993&ndash;2017 Yukihiro Matsumoto<br>
+      Ruby Core &copy; 1993&ndash;2020 Yukihiro Matsumoto<br>
       Licensed under the Ruby License.<br>
       Ruby Standard Library &copy; contributors<br>
       Licensed under their own licenses.
     HTML
+
+    version '3' do
+      self.release = '3.0.0'
+    end
+
+    version '2.7' do
+      self.release = '2.7.2'
+    end
+
+    version '2.6' do
+      self.release = '2.6.3'
+    end
 
     version '2.5' do
       self.release = '2.5.3'
@@ -83,6 +95,18 @@ module Docs
 
     version '2.2' do
       self.release = '2.2.10'
+    end
+
+    def get_latest_version(opts)
+      tags = get_github_tags('ruby', 'ruby', opts)
+      tags.each do |tag|
+        version = tag['name'].gsub(/_/, '.')[1..-1]
+
+        if !/^([0-9.]+)$/.match(version).nil? && version.count('.') == 2
+          return version
+        end
+      end
+
     end
   end
 end

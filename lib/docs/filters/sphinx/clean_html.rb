@@ -20,8 +20,8 @@ module Docs
         css('div[class*="highlight-"]', 'div[class*="hl-"]').each do |node|
           pre = node.at_css('pre')
           pre.content = pre.content
-          lang = node['class'][/code (\w+) highlight/, 1] || node['class'][/highlight\-(\w+)/, 1] || node['class'][/hl\-(\w+)/, 1]
-          lang = 'php' if lang == 'ci'
+          lang = node['class'][/code (\w+) highlight/, 1] || node['class'][/highlight\-([\w\+]+)/, 1] || node['class'][/hl\-(\w+)/, 1]
+          lang = 'php' if lang == 'ci'|| lang == 'html+php'
           lang = 'markup' if lang == 'html+django'
           lang = 'bash' if lang == 'bash'
           lang = 'python' if lang == 'default' || lang.start_with?('python') || lang.start_with?('ipython')
@@ -58,6 +58,8 @@ module Docs
         end
 
         css('dt').each do |node|
+          next if current_url.host == 'matplotlib.org'
+          next if current_url.host == 'numpy.org'
           next unless node['id'] || node.at_css('code, .classifier')
           links = []
           links << node.children.last.remove while node.children.last.try(:name) == 'a'

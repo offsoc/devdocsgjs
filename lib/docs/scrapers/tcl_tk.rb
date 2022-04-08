@@ -6,6 +6,10 @@ module Docs
     self.release = '8.6.6'
     self.base_url = 'https://www.tcl.tk/man/tcl/'
     self.root_path = 'contents.htm'
+    self.links = {
+      home: 'https://www.tcl.tk/',
+      code: 'https://sourceforge.net/projects/tcl/files/Tcl/'
+    }
 
     html_filters.push 'tcl_tk/entries', 'tcl_tk/clean_html', 'title'
 
@@ -25,5 +29,10 @@ module Docs
     options[:attribution] = <<-HTML
       Licensed under <a href="http://tcl.tk/software/tcltk/license.html">Tcl/Tk terms</a>
     HTML
+
+    def get_latest_version(opts)
+      doc = fetch_doc('https://www.tcl.tk/man/tcl/contents.htm', opts)
+      doc.at_css('h2').content.scan(/Tk([0-9.]+)/)[0][0]
+    end
   end
 end

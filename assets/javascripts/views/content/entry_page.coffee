@@ -6,6 +6,7 @@ class app.views.EntryPage extends app.View
     click: 'onClick'
 
   @shortcuts:
+    altC: 'onAltC'
     altO: 'onAltO'
 
   @routes:
@@ -40,6 +41,7 @@ class app.views.EntryPage extends app.View
     if app.disabledDocs.findBy 'slug', @entry.doc.slug
       @hiddenView = new app.views.HiddenPage @el, @entry
 
+    setFaviconForDoc(@entry.doc)
     @delay @polyfillMathML
     @trigger 'loaded'
     return
@@ -150,6 +152,12 @@ class app.views.EntryPage extends app.View
       $.stopEvent(event)
       target.classList.add if $.copyToClipboard(target.parentNode.textContent) then '_pre-clip-success' else '_pre-clip-error'
       setTimeout (-> target.className = '_pre-clip'), 2000
+    return
+
+  onAltC: =>
+    return unless link = @find('._attribution:last-child ._attribution-link')
+    console.log(link.href + location.hash)
+    navigator.clipboard.writeText(link.href + location.hash)
     return
 
   onAltO: =>
