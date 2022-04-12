@@ -30,9 +30,6 @@
     "fontconfig20",
     "freetype220",
     "gl10",
-    "networkmanager10",
-    "nm10",
-    "nmclient10",
     "polkit[a-z]*\\d+",
     "telepathyglib012",
     "win3210"
@@ -52,6 +49,11 @@
     "gdkx11\\d+",
     "gsk\\d+",
     "gtk\\d+"
+  ],
+  "networkmanager": [
+    "^networkmanager\\d+",
+    "^nm10",
+    "^nmclient10"
   ],
   "ubuntu": [
     "appindicator\\d+",
