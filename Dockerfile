@@ -32,12 +32,7 @@ COPY --from=fetch /usr/share/gnome-shell /usr/share/gnome-shell
 COPY --from=fetch /usr/lib64/mutter-10 /usr/lib64/mutter-10
 
 # These are extra GIRs we can't install with dnf
-COPY lib/docs/scrapers/gnome/girs/GnomeBluetooth-1.0.gir /usr/share/gir-1.0/
-COPY lib/docs/scrapers/gnome/girs/GtkosxApplication-1.0.gir /usr/share/gir-1.0/
-COPY lib/docs/scrapers/gnome/girs/Tracker-2.0.gir /usr/share/gir-1.0/
-COPY lib/docs/scrapers/gnome/girs/TrackerControl-2.0.gir /usr/share/gir-1.0/
-COPY lib/docs/scrapers/gnome/girs/TrackerMiner-2.0.gir /usr/share/gir-1.0/
-
+COPY lib/docs/scrapers/gnome/girs/*.gir /usr/share/gir-1.0/
 COPY lib/docs/scrapers/gnome/girs/mutter-3 /usr/lib64/mutter-3
 COPY lib/docs/scrapers/gnome/girs/mutter-4 /usr/lib64/mutter-4
 COPY lib/docs/scrapers/gnome/girs/mutter-5 /usr/lib64/mutter-5
@@ -58,21 +53,21 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
 COPY . /opt/devdocs/
 WORKDIR /opt/devdocs
 
-RUN bundle config set --local deployment 'true'
-RUN bundle install
+RUN bundle config set --local deployment 'true' && \
+    bundle install
 
 # Generate scrapers
-RUN bundle exec thor gir:generate_all /usr/share/gir-1.0
-RUN bundle exec thor gir:generate_all /usr/lib64/mutter-3
-RUN bundle exec thor gir:generate_all /usr/lib64/mutter-4
-RUN bundle exec thor gir:generate_all /usr/lib64/mutter-5
-RUN bundle exec thor gir:generate_all /usr/lib64/mutter-6
-RUN bundle exec thor gir:generate_all /usr/lib64/mutter-7
-RUN bundle exec thor gir:generate_all /usr/lib64/mutter-8
-RUN bundle exec thor gir:generate_all /usr/lib64/mutter-9
-RUN bundle exec thor gir:generate_all /usr/lib64/mutter-10
+RUN bundle exec thor gir:generate_all /usr/share/gir-1.0 && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-3 && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-4 && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-5 && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-6 && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-7 && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-8 && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-9 && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-10
 
-# Some of the gnome-shell GIRs need extra include paths
+# The GNOME Shell GIRs need to include the current mutter GIRs
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/Gvc-1.0.gir
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-0.1.gir --include /usr/lib64/mutter-10
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /usr/lib64/mutter-10
