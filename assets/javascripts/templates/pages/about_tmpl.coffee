@@ -22,14 +22,14 @@ app.templates.aboutPage = -> """
 
   <h2 class="_lined-heading">About the GNOME JavaScript documentation</h2>
 
-  <p>Generated using a modified <a href="https://github.com/ptomato/gobject-introspection/tree/wip/ptomato/devdocs">g-ir-doc-tool</a>.
+  <p>Documentation is generated with <code>g-ir-doc-tool</code> which is part of the <a href="https://gitlab.gnome.org/GNOME/gobject-introspection">GObject Introspection</a> project.<br>
      An experiment demoed at the Developer Experience hackfest 2016.
 
   <h2 class="_block-heading" id="copyright">Copyright and License</h2>
   <p class="_note">
     <strong>Copyright 2013&ndash;2021 Thibaut Courouble and <a href="https://github.com/freeCodeCamp/devdocs/graphs/contributors">other contributors</a></strong><br>
     This software is licensed under the terms of the Mozilla Public License v2.0.<br>
-    You may obtain a copy of the source code at <a href="https://github.com/ptomato/devdocs">github.com/ptomato/devdocs</a> or of the original DevDocs' source code at <a href="https://github.com/freeCodeCamp/devdocs">github.com/freeCodeCamp/devdocs</a>.<br>
+    You may obtain a copy of the DevDocs GJS source code at <a href="https://gitlab.gnome.org/GNOME/devdocsgjs">gitlab.gnome.org/GNOME/devdocsgjs</a>, or the original DevDocs source code at <a href="https://github.com/freeCodeCamp/devdocs">github.com/freeCodeCamp/devdocs</a>.<br>
     For more information, see the <a href="https://github.com/freeCodeCamp/devdocs/blob/main/COPYRIGHT">COPYRIGHT</a>
     and <a href="https://github.com/freeCodeCamp/devdocs/blob/main/LICENSE">LICENSE</a> files.
 
@@ -47,10 +47,10 @@ app.templates.aboutPage = -> """
   <h2 class="_block-heading" id="faq">Questions & Answers</h2>
   <dl>
     <dt>Where can I suggest new docs and features?
-    <dd>Find <strong>ptomato</strong> in #javascript on irc.gnome.org, or post to <a href="https://mail.gnome.org/mailman/listinfo/javascript-list">javascript-list</a>.
+    <dd>Open an issue in the <a href="https://gitlab.gnome.org/GNOME/devdocsgjs/-/issues">DevDocs GJS</a> repository.
     <dt>Where can I report bugs?
-    <dd>Report bugs with the documentation in the <a href="https://github.com/ptomato/devdocs/issues">issue tracker</a>.
-        Bugs in the DevDocs app go to <a href="https://github.com/freeCodeCamp/devdocs/issues">DevDocs' own issue tracker</a>.
+    <dd>Report bugs with the documentation in the <a href="https://gitlab.gnome.org/GNOME/devdocsgjs/-/issues">DevDocs GJS</a> repository.<br>
+        Bugs in the DevDocs app should be reported in <a href="https://github.com/freeCodeCamp/devdocs/issues">DevDocs' issue tracker</a>.
   </dl>
 
   <h2 class="_block-heading" id="credits">Credits</h2>
@@ -58,7 +58,8 @@ app.templates.aboutPage = -> """
   <p><strong>Special thanks to:</strong>
   <ul>
     <li>Everaldo Canuto, Patrick Griffis, and Dustin Falgout for helping get this site back online
-    <li><a href="https://nuveo.com.br">Nuveo</a> for sponsoring the hosting
+    <li><a href="https://gnome.org">GNOME</a> for sponsoring the hosting
+    <li><a href="https://nuveo.com.br">Nuveo</a>, a previous hosting sponsor
     <!-- The next three don't apply to us, we're not getting sponsored by them.
     The C/C++ logo is not used now, but will be later. -->
     <!--li><a href="https://sentry.io/">Sentry</a> and <a href="https://get.gaug.es/?utm_source=devdocs&utm_medium=referral&utm_campaign=sponsorships" title="Real Time Web Analytics">Gauges</a> for offering a free account to DevDocs
