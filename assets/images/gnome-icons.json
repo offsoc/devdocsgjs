@@ -1,54 +1,48 @@
 {
   "appstream": [
-    "appstreamglib\\d+"
+    "^appstreamglib\\d+"
   ],
   "adwaita": [
-    "adw1"
+    "^adw1"
   ],
   "cairo": [
-    "cairo10"
+    "^cairo10"
   ],
   "clutter": [
-    "cally\\d+",
-    "clutter\\d+",
-    "clutterx11\\d+",
-    "cogl\\d+",
-    "coglpango\\d+"
+    "^cally\\d+",
+    "^clutter\\d+",
+    "^clutterx11\\d+",
+    "^cogl\\d+",
+    "^coglpango\\d+"
   ],
   "evince": [
-    "evincedocument\\d+",
-    "evinceview\\d+"
+    "^evince[a-z]*\\d+"
   ],
   "evolution": [
-    "ecal20",
-    "camel12",
-    "ebook[a-z]*\\d+",
-    "edata[a-z]*\\d+"
+    "^ecal20",
+    "^camel12",
+    "^ebook[a-z]*\\d+",
+    "^edata[a-z]*\\d+"
   ],
   "generic": [
-    "dbus10",
-    "fontconfig20",
-    "freetype220",
-    "gl10",
-    "polkit[a-z]*\\d+",
-    "telepathyglib012",
-    "win3210"
+    "^polkit[a-z]*\\d+",
+    "^telepathyglib012"
   ],
   "gnome": [
-    "mutter\\d+",
-    "xdp\\d+"
+    "^mutter\\d+",
+    "^xdp\\d+"
   ],
   "goa": [
-    "goa\\d+"
+    "^goa\\d+"
   ],
   "gstreamer": [
-    "gst[a-z]*\\d+"
+    "^gst[a-z]*\\d+"
   ],
   "gtk": [
-    "gdk\\d+",
-    "gdkx11\\d+",
-    "gsk\\d+",
-    "gtk\\d+"
+    "^gdk\\d+",
+    "^gdkx11\\d+",
+    "^gsk\\d+",
+    "^gtk\\d+"
   ],
   "networkmanager": [
     "^networkmanager\\d+",
@@ -56,13 +50,12 @@
     "^nmclient10"
   ],
   "ubuntu": [
-    "appindicator\\d+",
-    "dbusmenu\\d+"
+    "^appindicator\\d+",
+    "^dbusmenu\\d+"
   ],
   "webkit": [
-    "javascriptcore\\d+",
-    "webkit\\d+",
-    "webkit2webextension\\d+"
+    "^javascriptcore\\d+",
+    "^webkit2[a-z]*\\d+"
   ],
   "x": [
   ]
