@@ -3,7 +3,8 @@ app.templates.helpPage = ->
   navKey = if $.isMac() then 'cmd' else 'alt'
   arrowScroll = app.settings.get('arrowScroll')
 
-  host = 'http://devdocs.baznga.org'
+  siteHost = 'gjs-docs.gnome.org'
+  sitePrettyName = 'GJS Docs'
   aliases_one = {}
   aliases_two = {}
   keys = Object.keys(app.models.Entry.ALIASES)
@@ -36,7 +37,7 @@ app.templates.helpPage = ->
   <h2 class="_block-heading" id="search">Search</h2>
   <p>
     The search is case-insensitive and ignores whitespace. It supports fuzzy matching
-    (e.g. <code class="_label">floadc</code> matches <code class="_label">File.load_contents()</code>)
+    (e.g. <code class="_label">bgcp</code> matches <code class="_label">background-clip</code>)
     as well as aliases (full list <a href="#aliases">below</a>).
   <dl>
     <dt id="doc_search">Searching a single documentation
@@ -49,15 +50,15 @@ app.templates.helpPage = ->
       <code class="_label">esc</code>.
     <dt id="url_search">Prefilling the search field
     <dd>
-      The search can be prefilled from the URL by visiting <a href="/#q=keyword" target="_top">#{host}/#q=keyword</a>.
+      The search can be prefilled from the URL by visiting <a href="/#q=keyword" target="_top">#{siteHost}/#q=keyword</a>.
       Characters after <code class="_label">#q=</code> will be used as search query.<br>
       To search a single documentation, add its name (or an abbreviation) and a space before the keyword:
-      <a href="/#q=js%20date" target="_top">#{host}/#q=js date</a>.
+      <a href="/#q=js%20date" target="_top">#{siteHost}/#q=js date</a>.
     <dt id="browser_search">Searching using the address bar
     <dd>
-      DevDocs supports OpenSearch. It can easily be installed as a search engine on most web browsers:
+      #{sitePrettyName} supports OpenSearch. It can easily be installed as a search engine on most web browsers:
       <ul>
-        <li>On Chrome, the setup is done automatically. Simply press <code class="_label">tab</code> when devdocs.io is autocompleted
+        <li>On Chrome, the setup is done automatically. Simply press <code class="_label">tab</code> when #{siteHost} is autocompleted
             in the omnibox (to set a custom keyword, click <em>Manage search engines\u2026</em> in Chrome's settings).
         <li>On Firefox, <a href="https://support.mozilla.org/en-US/kb/add-or-remove-search-engine-firefox#w_add-a-search-engine-from-the-address-bar">add the search from the address bar</a>:
             Click ••• in the address bar, and select <em>Add Search Engine</em>. Then, you can add a keyword for this search engine in the preferences.
@@ -150,7 +151,7 @@ app.templates.helpPage = ->
   <p class="_note _note-green">
     <strong>Tip:</strong> If the cursor is no longer in the search field, press <code class="_label">/</code> or
     continue to type and it will refocus the search field and start showing new results.
-
+<!--
   <h2 class="_block-heading" id="aliases">Search Aliases</h2>
   <div class="_aliases">
     <table>
@@ -166,5 +167,6 @@ app.templates.helpPage = ->
       #{("<tr><td class=\"_code\">#{key}<td class=\"_code\">#{value}" for key, value of aliases_two).join('')}
     </table>
   </div>
-  <!--p>Feel free to suggest new aliases on <a href="https://github.com/freeCodeCamp/devdocs/issues/new">GitHub</a>.-->
+  <p>Feel free to suggest new aliases on <a href="https://github.com/freeCodeCamp/devdocs/issues/new">GitHub</a>.
+-->
 """

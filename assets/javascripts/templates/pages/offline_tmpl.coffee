@@ -32,7 +32,7 @@ app.templates.offlinePage = (docs) -> """
     <dt>What if I don't update a documentation?
     <dd>You'll see outdated content and some pages will be missing or broken, because the rest of the app (including data for the search and sidebar) uses a different caching mechanism that's updated automatically.
     <dt>I found a bug, where do I report it?
-    <dd>In the <a href="https://github.com/freeCodeCamp/devdocs/issues">issue tracker</a>. Thanks!
+    <dd>In the <a href="https://gitlab.gnome.org/GNOME/devdocsgjs/issues">issue tracker</a>. Thanks!
     <dt>How do I uninstall/reset the app?
     <dd>Click <a href="#" data-behavior="reset">here</a>.
     <dt>Why aren't all documentations listed above?
@@ -42,14 +42,14 @@ app.templates.offlinePage = (docs) -> """
 
 canICloseTheTab = ->
   if app.ServiceWorker.isEnabled()
-    """ Yes! Even offline, you can open a new tab, go to <a href="//devdocs.io">devdocs.io</a>, and everything will work as if you were online (provided you installed all the documentations you want to use beforehand). """
+    """ Yes! Even offline, you can open a new tab, go to <a href="//gjs-docs.gnome.org">gjs-docs.gnome.org</a>, and everything will work as if you were online (provided you installed all the documentations you want to use beforehand). """
   else
     reason = "aren't available in your browser (or are disabled)"
 
     if app.config.env != 'production'
       reason = "are disabled in your development instance of DevDocs (enable them by setting the <code>ENABLE_SERVICE_WORKER</code> environment variable to <code>true</code>)"
 
-    """ No. Service Workers #{reason}, so loading <a href="//devdocs.io">devdocs.io</a> offline won't work.<br>
+    """ No. Service Workers #{reason}, so loading <a href="//gjs-docs.gnome.org">gjs-docs.gnome.org</a> offline won't work.<br>
         The current tab will continue to function even when you go offline (provided you installed all the documentations beforehand). """
 
 app.templates.offlineDoc = (doc, status) ->

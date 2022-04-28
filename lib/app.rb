@@ -73,7 +73,7 @@ class App < Sinatra::Application
 
   configure :production do
     set :static, false
-    set :docs_origin, '//documents.devdocs.io'
+    set :docs_origin, '//gjs-docs.gnome.org'
     set :csp, "default-src 'self' *; script-src 'self' 'nonce-devdocs' https://www.google-analytics.com https://secure.gaug.es https://*.jquery.com; font-src 'none'; style-src 'self' 'unsafe-inline' *; img-src 'self' * data:;"
 
     use Rack::ConditionalGet
@@ -246,12 +246,12 @@ class App < Sinatra::Application
     halt erb :unsupported if unsupported_browser?
   end
 
-  OUT_HOST = 'out.devdocs.io'.freeze
+  OUT_HOST = 'out.gjs-docs.gnome.org'.freeze
 
   before do
     if request.host == OUT_HOST && !request.path.start_with?('/s/')
       query_string = "?#{request.query_string}" unless request.query_string.empty?
-      redirect "https://devdocs.io#{request.path}#{query_string}", 302
+      redirect "https://gjs-docs.gnome.org#{request.path}#{query_string}", 302
     end
   end
 
@@ -426,36 +426,36 @@ class App < Sinatra::Application
   configure do
     require 'rss'
     feed = RSS::Maker.make('atom') do |maker|
-      maker.channel.id = 'tag:devdocs.io,2014:/feed'
+      maker.channel.id = 'tag:gjs-docs.gnome.org,2014:/feed'
       maker.channel.title = 'DevDocs'
       maker.channel.author = 'DevDocs'
       maker.channel.updated = "#{settings.news.first.first}T14:00:00Z"
 
       maker.channel.links.new_link do |link|
         link.rel = 'self'
-        link.href = 'https://devdocs.io/feed.atom'
+        link.href = 'https://gjs-docs.gnome.org/feed.atom'
         link.type = 'application/atom+xml'
       end
 
       maker.channel.links.new_link do |link|
         link.rel = 'alternate'
-        link.href = 'https://devdocs.io/'
+        link.href = 'https://gjs-docs.gnome.org/'
         link.type = 'text/html'
       end
 
       news.each_with_index do |news, i|
         maker.items.new_item do |item|
-          item.id = "tag:devdocs.io,2014:News/#{settings.news.length - i}"
+          item.id = "tag:gjs-docs.gnome.org,2014:News/#{settings.news.length - i}"
           item.title = news[1].split("\n").first.gsub(/<\/?[^>]*>/, '')
           item.description do |desc|
-            desc.content = news[1..-1].join.gsub("\n", '<br>').gsub('href="/', 'href="https://devdocs.io/')
+            desc.content = news[1..-1].join.gsub("\n", '<br>').gsub('href="/', 'href="https://gjs-docs.gnome.org/')
             desc.type = 'html'
           end
           item.updated = "#{news.first}T14:00:00Z"
           item.published = "#{news.first}T14:00:00Z"
           item.links.new_link do |link|
             link.rel = 'alternate'
-            link.href = 'https://devdocs.io/'
+            link.href = 'https://gjs-docs.gnome.org/'
             link.type = 'text/html'
           end
         end
