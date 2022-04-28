@@ -18,7 +18,7 @@ RUN dnf install -y \
         telepathy-glib-devel tracker-devel udisks-devel upower-devel \
         vte{,291}-devel wireplumber-devel && \
     dnf clean all && \
-    rm -rf /var/cache/yum
+    rm -rf /var/cache/dnf
 
 
 # We build in fedora:33 for the ruby dependency
@@ -47,7 +47,7 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
     dnf install -y ruby rubygem-bundler ruby-devel python3-markdown \
                    gobject-introspection-devel && \
     dnf clean all && \
-    rm -rf /var/cache/yum
+    rm -rf /var/cache/dnf
 
 # Install the devdocs application
 COPY . /opt/devdocs/
