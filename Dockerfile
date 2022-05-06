@@ -109,13 +109,13 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
 # We deploy in ruby:2.7.5-alpine for size
 #
 # Changes from Dockerfile-alpine:
-# - Ruby 2.6.0 -> 2.7.5
+# - Ruby 2.6.0 -> 2.7.6
 # - Copy from the build-stage image instead of the current dir
 # - Update bundler CLI usage
 # - Remove `thor compile:assets` until we run in production mode (TODO)
 # - The css and javascript docsets don't resolve and have been removed
 # - User permission fixes
-FROM docker.io/library/ruby:2.7.5-alpine
+FROM docker.io/library/ruby:2.7.6-alpine
 
 ENV LANG=C.UTF-8
 ENV ENABLE_SERVICE_WORKER=true

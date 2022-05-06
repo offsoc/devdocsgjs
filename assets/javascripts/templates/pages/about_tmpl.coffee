@@ -198,7 +198,7 @@ credits = [
     'https://raw.githubusercontent.com/bcit-ci/CodeIgniter/develop/license.txt'
   ], [
     'CoffeeScript',
-    '2009-2021 Jeremy Ashkenas',
+    '2009-2022 Jeremy Ashkenas',
     'MIT',
     'https://raw.githubusercontent.com/jashkenas/coffeescript/master/LICENSE'
   ], [
@@ -218,7 +218,7 @@ credits = [
     'https://raw.githubusercontent.com/crystal-lang/crystal/master/LICENSE'
   ], [
     'CSS<br>DOM<br>HTTP<br>HTML<br>JavaScript<br>SVG<br>XPath',
-    '2005-2021 MDN contributors',
+    '2005-2022 MDN contributors',
     'CC BY-SA',
     'https://creativecommons.org/licenses/by-sa/2.5/'
   ], [
@@ -233,7 +233,7 @@ credits = [
     'https://raw.githubusercontent.com/dlang/phobos/master/LICENSE_1_0.txt'
   ], [
     'D3.js',
-    '2010-2021 Michael Bostock',
+    '2010-2022 Michael Bostock',
     'BSD',
     'https://raw.githubusercontent.com/d3/d3/master/LICENSE'
   ], [
@@ -333,7 +333,7 @@ credits = [
     'https://fishshell.com/docs/current/license.html'
   ], [
     'Flask',
-    '2007-2021 Pallets',
+    '2007-2022 Pallets',
     'BSD',
     'https://github.com/pallets/flask/blob/master/LICENSE.rst'
   ], [
@@ -438,7 +438,7 @@ credits = [
     'https://raw.githubusercontent.com/jekyll/jekyll/master/LICENSE'
   ], [
     'Jest',
-    '2021 Facebook, Inc.',
+    '2022 Facebook, Inc.',
     'MIT',
     'https://raw.githubusercontent.com/facebook/jest/master/LICENSE'
   ], [
@@ -492,6 +492,11 @@ credits = [
     'Apache',
     'https://raw.githubusercontent.com/JetBrains/kotlin/master/license/LICENSE.txt'
   ], [
+    'Kubernetes',
+    '2022 The Kubernetes Authors and The Linux Foundation',
+    'Apache License 2.0',
+    'https://github.com/kubernetes/kubernetes/blob/master/LICENSE'
+  ], [
     'Laravel',
     'Taylor Otwell',
     'MIT',
@@ -503,7 +508,7 @@ credits = [
     'https://ctan.org/pkg/latex2e-help-texinfo/'
   ], [
     'Leaflet',
-    '2010-2021 Vladimir Agafonkin<br>&copy; 2010-2011, CloudMade<br>Maps &copy; OpenStreetMap contributors.',
+    '2010-2022 Vladimir Agafonkin<br>&copy; 2010-2011, CloudMade<br>Maps &copy; OpenStreetMap contributors.',
     'BSD',
     'https://raw.githubusercontent.com/Leaflet/Leaflet/master/LICENSE'
   ], [
@@ -597,6 +602,11 @@ credits = [
     'MIT',
     'https://github.com/nim-lang/Nim#license'
   ], [
+    'Nix',
+    '2022 NixOS Contributors',
+    'LGPLv2.1',
+    'https://github.com/NixOS/nix#license'
+  ], [
     'Node.js',
     'Joyent, Inc. and other Node contributors<br>Node.js is a trademark of Joyent, Inc.',
     'MIT',
@@ -618,17 +628,17 @@ credits = [
     'https://raw.githubusercontent.com/numpy/numpy/master/LICENSE.txt'
   ], [
     'OCaml',
-    '1995-2021 INRIA',
+    '1995-2022 INRIA',
     'CC BY-SA',
     'https://ocaml.org/docs/'
   ], [
     'Octave',
-    '1996-2018 John W. Eaton',
+    '1996–2022 The Octave Project Developers',
     'Octave',
-    'https://octave.org/doc/interpreter/'
+    'https://octave.org/doc/v7.1.0/'
   ], [
     'OpenJDK',
-    '1993, 2021, Oracle and/or its affiliates. All rights reserved.<br>Licensed under the GNU General Public License, version 2, with the Classpath Exception.<br>Various third party code in OpenJDK is licensed under different licenses.<br>Java and OpenJDK are trademarks or registered trademarks of Oracle and/or its affiliates.',
+    '1993, 2022, Oracle and/or its affiliates. All rights reserved.<br>Licensed under the GNU General Public License, version 2, with the Classpath Exception.<br>Various third party code in OpenJDK is licensed under different licenses.<br>Java and OpenJDK are trademarks or registered trademarks of Oracle and/or its affiliates.',
     'GPLv2',
     'http://openjdk.java.net/legal/gplv2+ce.html'
   ], [
@@ -748,7 +758,7 @@ credits = [
     'https://raw.githubusercontent.com/react-bootstrap/react-bootstrap/master/LICENSE'
   ], [
     'React Router',
-    'React Training 2015-2019<br>Remix Software 2020-2021',
+    'React Training 2015-2019<br>Remix Software 2020-2022',
     'MIT',
     'https://raw.githubusercontent.com/remix-run/react-router/main/LICENSE.md'
   ], [
@@ -763,7 +773,7 @@ credits = [
     'https://creativecommons.org/licenses/by-sa/4.0/'
   ], [
     'Redux',
-    '2015-2021 Dan Abramov',
+    '2015-2022 Dan Abramov',
     'MIT',
     'https://raw.githubusercontent.com/reactjs/redux/master/LICENSE.md'
   ], [
@@ -778,7 +788,7 @@ credits = [
     'https://raw.githubusercontent.com/rethinkdb/docs/master/LICENSE'
   ], [
     'Ruby',
-    '1993-2017 Yukihiro Matsumoto',
+    '1993-2022 Yukihiro Matsumoto',
     'Ruby',
     'https://www.ruby-lang.org/en/about/license.txt'
   ], [
@@ -793,7 +803,7 @@ credits = [
     'https://raw.githubusercontent.com/rust-lang/book/master/LICENSE-MIT'
   ], [
     'RxJS',
-    '2015-2021 Google, Inc., Netflix, Inc., Microsoft Corp. and contributors',
+    '2015-2022 Google, Inc., Netflix, Inc., Microsoft Corp. and contributors',
     'Apache',
     'https://raw.githubusercontent.com/ReactiveX/rxjs/master/LICENSE.txt'
   ], [
@@ -933,7 +943,7 @@ credits = [
     'https://creativecommons.org/licenses/by/4.0/'
   ], [
     'Werkzeug',
-    '2007-2021 Pallets',
+    '2007-2022 Pallets',
     'BSD',
     'https://github.com/pallets/werkzeug/blob/master/LICENSE.rst'
   ], [
