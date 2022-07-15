@@ -17,7 +17,7 @@ app.templates.aboutPage = -> """
   <ul>
     <li>Follow <a href="https://twitter.com/DevDocs">@DevDocs</a> on Twitter
     <li>Watch the repository on <a href="https://github.com/freeCodeCamp/devdocs/subscription">GitHub</a> <iframe class="_github-btn" src="https://ghbtns.com/github-btn.html?user=freeCodeCamp&repo=devdocs&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20" tabindex="-1"></iframe>
-    <li>Join the <a href="https://gitter.im/FreeCodeCamp/DevDocs">Gitter</a> chat room
+    <li>Join the <a href="https://discord.gg/PRyKn3Vbay">Discord</a> chat room
   </ul>
 
   <h2 class="_lined-heading">About the GNOME JavaScript documentation</h2>
@@ -35,7 +35,6 @@ app.templates.aboutPage = -> """
 
   <!--h2 class="_block-heading" id="plugins">Plugins and Extensions</h2>
   <ul>
-    <li><a href="https://chrome.google.com/webstore/detail/devdocs/mnfehgbmkapmjnhcnbodoamcioleeooe">Chrome web app</a>
     <li><a href="https://github.com/egoist/devdocs-app">Desktop app</a>
     <li><a href="https://sublime.wbond.net/packages/DevDocs">Sublime Text package</a>
     <li><a href="https://atom.io/packages/devdocs">Atom package</a>
@@ -138,7 +137,7 @@ credits = [
     'https://raw.githubusercontent.com/petkaantonov/bluebird/master/LICENSE'
   ], [
     'Bootstrap',
-    '2011-2021 Twitter, Inc.<br>2011-2021 The Bootstrap Authors',
+    '2011-2022 Twitter, Inc.<br>2011-2022 The Bootstrap Authors',
     'CC BY',
     'https://creativecommons.org/licenses/by/3.0/'
   ], [
@@ -303,7 +302,7 @@ credits = [
     'https://raw.githubusercontent.com/airbnb/enzyme/master/LICENSE.md'
   ], [
     'Erlang',
-    '2010-2021 Ericsson AB',
+    '2010-2022 Ericsson AB',
     'Apache',
     'https://raw.githubusercontent.com/erlang/otp/maint/LICENSE.txt'
   ], [
@@ -588,7 +587,7 @@ credits = [
     'https://github.com/LearnBoost/mongoose/blob/master/README.md#license'
   ], [
     'nginx',
-    '2002-2021 Igor Sysoev<br>&copy; 2011-2021 Nginx, Inc.',
+    '2002-2021 Igor Sysoev<br>&copy; 2011-2022 Nginx, Inc.',
     'BSD',
     'http://nginx.org/LICENSE'
   ], [
@@ -848,7 +847,7 @@ credits = [
     'https://raw.githubusercontent.com/Automattic/socket.io/master/LICENSE'
   ], [
     'Spring Boot',
-    '2002-2021 Pivotal, Inc. All Rights Reserved.',
+    '2002-2022 Pivotal, Inc. All Rights Reserved.',
     'Apache License 2.0',
     'https://raw.githubusercontent.com/spring-projects/spring-boot/master/LICENSE.txt'
   ], [
@@ -878,7 +877,7 @@ credits = [
     'http://tcl.tk/software/tcltk/license.html'
   ], [
     'TensorFlow',
-    '2020 The TensorFlow Authors',
+    '2022 The TensorFlow Authors',
     'CC BY',
     'https://creativecommons.org/licenses/by/4.0/'
   ], [

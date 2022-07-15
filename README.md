@@ -20,11 +20,11 @@ DevDocs was created by [Thibaut Courouble](https://thibaut.me) and is operated b
 
 ## We are currently searching for maintainers
 
-Please reach out to the community on [Gitter](https://gitter.im/FreeCodeCamp/DevDocs) if you would like to join the team!
+Please reach out to the community on [Discord](https://discord.gg/PRyKn3Vbay) if you would like to join the team!
 
 Keep track of development news:
 
-* Join the contributor chat room on [Gitter](https://gitter.im/FreeCodeCamp/DevDocs)
+* Join the devdocs chat room on [Discord](https://discord.gg/PRyKn3Vbay)
 * Watch the repository on [GitHub](https://github.com/freeCodeCamp/devdocs/subscription)
 * Follow [@DevDocs](https://twitter.com/DevDocs) on Twitter
 
@@ -161,8 +161,6 @@ Made something cool? Feel free to open a PR to add a new row to this table!
 
 | Project                                                                                                 | Description                                                            | Last commit                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Chrome web app](https://chrome.google.com/webstore/detail/devdocs/mnfehgbmkapmjnhcnbodoamcioleeooe)    | Chrome Web App which adds a shortcut to DevDocs apps page.             | N/A                                                                                                                                                                        |
-| [Ubuntu Touch app](https://uappexplorer.com/app/devdocsunofficial.berkes)                               | Application for devices running Ubuntu Touch.                          | N/A                                                                                                                                                                        |
 | [Sublime Text plugin](https://sublime.wbond.net/packages/DevDocs)                                       | Sublime Text plugin to search DevDocs by selection or by input.        | [![Latest GitHub commit](https://img.shields.io/github/last-commit/vitorbritto/sublime-devdocs?logo=github&label)](https://github.com/vitorbritto/sublime-devdocs)         |
 | [Atom plugin](https://atom.io/packages/devdocs)                                                         | Atom plugin adding the `doc` command to search DevDocs.                | [![Latest GitHub commit](https://img.shields.io/github/last-commit/masnun/atom-devdocs?logo=github&label)](https://github.com/masnun/atom-devdocs)                         |
 | [gruehle/dev-docs-viewer](https://github.com/gruehle/dev-docs-viewer)                                   | Brackets extension for searching and viewing DevDocs content.          | [![Latest GitHub commit](https://img.shields.io/github/last-commit/gruehle/dev-docs-viewer?logo=github&label)](https://github.com/gruehle/dev-docs-viewer)                 |
@@ -192,4 +190,4 @@ We also wish that any documentation file generated using this software be attrib
 
 ## Questions?
 
-If you have any questions, please feel free to ask them on the contributor chat room on [Gitter](https://gitter.im/FreeCodeCamp/DevDocs).
+If you have any questions, please feel free to ask them on the contributor chat room on [Discord](https://discord.gg/PRyKn3Vbay).
