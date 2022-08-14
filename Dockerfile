@@ -55,6 +55,9 @@ WORKDIR /opt/devdocs
 
 RUN bundle config set --local deployment 'true' && \
     bundle install
+    
+# JavaScript/TypeScript, Jasmine, CSS
+RUN bundle exec thor docs:download css javascript jasmine typescript
 
 # Generate scrapers
 RUN bundle exec thor gir:generate_all /usr/share/gir-1.0 && \

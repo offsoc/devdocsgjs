@@ -1,4 +1,16 @@
 {
+  "javascript": [
+    "^javascript"
+  ],
+  "typescript": [
+    "^typescript"
+  ],
+  "jasmine": [
+    "^jasmine"
+  ],
+  "css": [
+    "^css"
+  ],
   "appstream": [
     "^appstreamglib\\d+"
   ],
