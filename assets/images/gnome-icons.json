@@ -1,15 +1,15 @@
 {
   "javascript": [
-    "^javascript"
+    "^javascript$"
   ],
   "typescript": [
-    "^typescript"
+    "^typescript$"
   ],
   "jasmine": [
-    "^jasmine"
+    "^jasmine$"
   ],
   "css": [
-    "^css"
+    "^css$"
   ],
   "appstream": [
     "^appstreamglib\\d+"
