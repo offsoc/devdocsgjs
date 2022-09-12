@@ -116,6 +116,11 @@ credits = [
     'MIT',
     'https://raw.githubusercontent.com/caolan/async/master/LICENSE'
   ], [
+    'Axios',
+    '2014-present Matt Zabriskie',
+    'MIT',
+    'https://raw.githubusercontent.com/axios/axios/main/LICENSE'
+  ], [
     'Babel',
     '2014-present Sebastian McKenzie',
     'MIT',
@@ -240,6 +245,11 @@ credits = [
     '2012 the Dart project authors',
     'CC BY-SA',
     'https://creativecommons.org/licenses/by-sa/4.0/'
+  ], [
+    'date-fns',
+    '2021 Sasha Koss and Lesha Koss',
+    'MIT',
+    'https://raw.githubusercontent.com/date-fns/date-fns/main/LICENSE.md'
   ], [
     'Deno',
     '2018–2022 the Deno authors',
@@ -392,7 +402,7 @@ credits = [
     'https://raw.githubusercontent.com/wycats/handlebars.js/master/LICENSE'
   ], [
     'HAProxy',
-    '2021 Willy Tarreau, HAProxy contributors',
+    '2022 Willy Tarreau, HAProxy contributors',
     'GPLv2',
     'https://raw.githubusercontent.com/haproxy/haproxy/master/LICENSE'
   ], [
@@ -472,7 +482,7 @@ credits = [
     'https://raw.githubusercontent.com/jsdoc3/jsdoc3.github.com/master/LICENSE'
   ], [
     'Julia',
-    '2009-2021 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors',
+    '2009-2022 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors',
     'MIT',
     'https://raw.githubusercontent.com/JuliaLang/julia/master/LICENSE.md'
   ], [
@@ -537,7 +547,7 @@ credits = [
     'http://www.gnu.org/copyleft/fdl.html'
   ], [
     'MariaDB',
-    '2019 MariaDB',
+    '2022 MariaDB',
     'CC BY-SA & GFDL',
     'https://mariadb.com/kb/en/library/documentation/+license/'
   ], [
@@ -776,6 +786,11 @@ credits = [
     'MIT',
     'https://raw.githubusercontent.com/reactjs/redux/master/LICENSE.md'
   ], [
+    'Requests',
+    '2011-2022 Kenneth Reitz and other contributors',
+    'Apache',
+    'https://raw.githubusercontent.com/psf/requests/main/LICENSE'
+  ], [
     'RequireJS',
     'jQuery Foundation and other contributors',
     'MIT',
@@ -810,6 +825,11 @@ credits = [
     '2021 SaltStack',
     'Apache',
     'https://raw.githubusercontent.com/saltstack/salt/develop/LICENSE'
+  ], [
+    'Sanctuary',
+    '2020 Sanctuary; 2016 Plaid Technologies, Inc.',
+    'MIT',
+    'https://raw.githubusercontent.com/sanctuary-js/sanctuary/master/LICENSE'
   ], [
     'Sass',
     '2006-2020 Hampton Catlin, Nathan Weizenbaum, and Chris Eppstein',
