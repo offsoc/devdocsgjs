@@ -30,6 +30,9 @@ module Docs
     options[:title] = 'GJS'
     options[:skip_links] = true
 
+    # Transform absolute URIs into relative URIs
+    options[:fix_urls] = ->(url) { url.gsub!(/^https:\/\/gjs-docs.gnome.org/, '..') }
+
     options[:attribution] = <<-HTML
       &copy; 2022 GJS Contributors<br>
       Licensed under the MIT License.
