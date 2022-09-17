@@ -2,23 +2,24 @@
 FROM registry.fedoraproject.org/fedora:37 AS fetch
 
 RUN dnf install -y \
-        NetworkManager-libnm-devel cairo-devel evince-devel folks-devel \
-        gcr-devel gcr-gtk3-devel gcr-gtk4-devel gcr3-devel geoclue2-devel \
-        geocode-glib-devel glib2-devel gnome-bluetooth-libs-devel \
-        gnome-online-accounts-devel gnome-shell gobject-introspection-devel \
-        gom-devel graphene-devel grilo-devel gsettings-desktop-schemas-devel \
-        gsound-devel gspell-devel \
+        NetworkManager-libnm-devel cairo-devel evince-devel flatpak-devel \
+        folks-devel gcr-devel gcr-gtk3-devel gcr-gtk4-devel gcr3-devel \
+        geoclue2-devel geocode-glib-devel glib2-devel \
+        gnome-bluetooth-libs-devel gnome-online-accounts-devel gnome-shell \
+        gobject-introspection-devel gom-devel granite-devel graphene-devel \
+        grilo-devel gsettings-desktop-schemas-devel gsound-devel gspell-devel \
         gstreamer1-{,plugins-base-,plugins-bad-free-}devel gtk{2,3,4}-devel \
-        gtksourceview{3,4}-devel gupnp-devel gupnp-dlna-devel harfbuzz-devel \
+        gtksourceview{3,4,5}-devel gupnp-devel gupnp-dlna-devel harfbuzz-devel \
         ibus-devel keybinder3-devel libappindicator-gtk3-devel \
         libadwaita-devel libappstream-glib-devel libgcab1-devel libgdata-devel \
         libgda-devel libgda5-devel libgudev-devel libgweather-devel \
-        libgxps-devel libhandy1-devel libnotify-devel libpeas-devel \
-        libportal-devel librsvg2-devel libsecret-devel libsoup-devel \
-        libsoup3-devel mutter pango-devel polkit-devel poppler-glib-devel \
-        rest-devel rest0.7-devel telepathy-glib-devel tracker-devel \
-        udisks-devel upower-devel vte{,291}-devel \
-        webkit2gtk{4.0,4.1,5.0}-devel wireplumber-devel && \
+        libgweather4-devel libgxps-devel libhandy1-devel libnotify-devel \
+        libpeas-devel libportal-devel librsvg2-devel libsecret-devel \
+        libshumate-devel libsoup-devel libsoup3-devel mutter pango-devel \
+        polkit-devel poppler-glib-devel rest-devel rest0.7-devel \
+        telepathy-glib-devel tracker-devel udisks-devel upower-devel \
+        vte{,291,291-gtk4}-devel webkit2gtk{4.0,4.1,5.0}-devel \
+        wireplumber-devel && \
     dnf clean all && \
     rm -rf /var/cache/dnf
 
@@ -89,25 +90,26 @@ RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /u
 #   libxml220, win3210, xfixes40, xft20, xlib20, xrandr13
 RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         camel12  dbusmenu04 ebook12 ebookcontacts12 ecal20 edataserver12 \
-        edataserverui12 evincedocument30 evinceview30 folks07 folksdummy07 \
-        folkseds07 folkstelepathy07 gcab10 gck1 gck2 gcr3 gcr4 gcrui3 gcrgtk34 \
-        gcrgtk44 gda50 gda60 gdata00 gdesktopenums30 gdk20 gdk30 gdk40 \
-        gdkpixbuf20 gdkx1120 gdkx1130 gdkx1140 gee08 geoclue20 geocodeglib10 \
-        gio20 girepository20 glib20 gnomebluetooth10 gnomebluetooth30 goa10 \
-        gobject20 gom10 graphene10 grl03 grlnet03 grlpls03 gsk40 gsound10 \
-        gspell1 gssdp12 gst10 gstallocators10 gstapp10 gstaudio10 \
-        gstbadaudio10 gstbase10 gstcheck10 gstcodecs10 gstcontroller10 gstgl10 \
-        gstinsertbin10 gstmpegts10 gstnet10 gstpbutils10 gstplayer10 gstrtp10 \
-        gstrtsp10 gstsdp10 gsttag10 gstvideo10 gstvulkan10 gstwebrtc10 gtk20 \
-        gtk30 gtk40 gtkosxapplication10 gtksource30 gtksource4 gudev10 gupnp12 \
-        gupnpdlna20 gupnpdlnagst20 gvc10 gweather30 gxps01 handy1 ibus10 \
-        javascriptcore40 json10 keybinder30 nm10 notify07 pango10 pangocairo10 \
-        pangoft210 pangoxft10 peas10 peasgtk10 polkit10 polkitagent10 \
-        poppler018 rest07 rest10 restextras07 restextras10 rsvg20 secret1 \
-        soup24 soup30 soupgnome24 telepathyglib012 tracker20 tracker30 \
-        trackercontrol20 trackerminer20 upowerglib10 vte00 vte291 webkit240 \
-        webkit2webextension40 webkit241 webkit2webextension41 webkit250 \
-        webkit2webextension50 wp04 xdp10 \
+        edataserverui12 evincedocument30 evinceview30 flatpak10 folks07 \
+        folksdummy07 folkseds07 folkstelepathy07 gcab10 gck1 gck2 gcr3 gcr4 \
+        gcrui3 gcrgtk34 gcrgtk44 gda50 gda60 gdata00 gdesktopenums30 gdk20 \
+        gdk30 gdk40 gdkpixbuf20 gdkx1120 gdkx1130 gdkx1140 gee08 geoclue20 \
+        geocodeglib10 gio20 girepository20 glib20 gnomebluetooth10 \
+        gnomebluetooth30 goa10 gobject20 gom10 granite10 graphene10 grl03 \
+        grlnet03 grlpls03 gsk40 gsound10 gspell1 gssdp12 gst10 gstallocators10 \
+        gstapp10 gstaudio10 gstbadaudio10 gstbase10 gstcheck10 gstcodecs10 \
+        gstcontroller10 gstgl10 gstinsertbin10 gstmpegts10 gstnet10 \
+        gstpbutils10 gstplayer10 gstrtp10 gstrtsp10 gstsdp10 gsttag10 \
+        gstvideo10 gstvulkan10 gstwebrtc10 gtk20 gtk30 gtk40 \
+        gtkosxapplication10 gtksource30 gtksource4 gtksource5 gudev10 gupnp12 \
+        gupnpdlna20 gupnpdlnagst20 gvc10 gweather30 gweather40 gxps01 handy1 \
+        ibus10 javascriptcore40 json10 keybinder30 nm10 notify07 pango10 \
+        pangocairo10 pangoft210 pangoxft10 peas10 peasgtk10 polkit10 \
+        polkitagent10 poppler018 rest07 rest10 restextras07 restextras10 \
+        rsvg20 secret1 shumate10 soup24 soup30 soupgnome24 telepathyglib012 \
+        tracker20 tracker30 trackercontrol20 trackerminer20 upowerglib10 vte00 \
+        vte291 vte391 webkit240 webkit2webextension40 webkit241 webkit2webextension41 \
+        webkit250 webkit2webextension50 wp04 xdp10 \
         cally3 clutter3 clutterx113 cogl3 coglpango3 meta3 \
         cally4 clutter4 clutterx114 cogl4 coglpango4 meta4 \
         cally5 clutter5 clutterx115 cogl5 coglpango5 meta5 \

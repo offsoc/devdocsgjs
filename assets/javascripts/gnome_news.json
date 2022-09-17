@@ -1,5 +1,9 @@
 [
   [
+    "2022-09-17",
+    "New documentations: <a href='/flatpak10/'>Flatpak 1.0</a>, <a href='/granite10/'>Granite 1.0</a>, <a href='/gtksource5/'>GtkSourceView 5.0</a> (GTK4), <a href='/gweather40/'>GWeather 4.0</a> (GTK4), <a href='/shumate10/'>Shumate 1.0</a>, <a href='/vte391/'>Vte 391</a> (GTK4)"
+  ],
+  [
     "2022-09-12",
     "New documentations: <a href='/cally11/'>Cally 11</a>, <a href='/clutter11/'>Clutter 11</a>, <a href='/cogl11/'>Cogl 11</a>, <a href='/coglpango11/'>CoglPango 11</a>, <a href='/meta11/'>Mutter 11</a>, <a href='/gck20/'>Gck 2.0</a>, <a href='/gcr40/'>Gcr 4.0</a>, <a href='/gcrgtk34/'>GcrGtk3 4 (GTK3)</a>, <a href='/gcrgtk44/'>GcrGtk4 4 (GTK4)</a>, <a href='/gda60/'>Gda 6.0</a>, <a href='/rest10/'>Rest 1.0</a>, <a href='/restextras10/'>RestExtras 1.0</a>, <a href='/webkit241/'>WebKit2 4.1 (GTK3, libsoup3)</a>, <a href='/webkit241/'>WebKit2WebExtension 4.1 (GTK3, libsoup3)</a>, <a href='/webkit250/'>WebKit2 5.0 (GTK4)</a>, <a href='/webkit250/'>WebKit2WebExtension 5.0 (GTK4)</a>"
   ],
