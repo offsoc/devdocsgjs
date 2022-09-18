@@ -1,7 +1,7 @@
 [
   [
     "2022-09-17",
-    "New documentations: <a href='/flatpak10/'>Flatpak 1.0</a>, <a href='/granite10/'>Granite 1.0</a>, <a href='/gtksource5/'>GtkSourceView 5.0</a> (GTK4), <a href='/gweather40/'>GWeather 4.0</a> (GTK4), <a href='/shumate10/'>Shumate 1.0</a>, <a href='/vte391/'>Vte 391</a> (GTK4)"
+    "New documentations: <a href='/colord10/'>Colord 1.0</a>, <a href='/colordgtk10/'>ColordGtk 1.0</a>, <a href='/colorhug10/'>Colorhug 1.0</a>, <a href='/edatabook12/'>EDataBook 1.2</a>, <a href='/edatacal12/'>EDataCal 1.2</a>, <a href='/edataserverui412/'>EDataServerUI4 1.2</a> (GTK4), <a href='/flatpak10/'>Flatpak 1.0</a>, <a href='/gnomeautoar01/'>GnomeAutoar 0.1</a>, <a href='/gnomeautoargtk01/'>GnomeAutoar 0.1</a>, <a href='/gnomebg40/'>GnomeBG 4.0</a>, <a href='/gnomedesktop30/'>GnomeDesktop 3.0</a>, <a href='/gnomedesktop40/'>GnomeDesktop 4.0</a>, <a href='/gnomerr40/'>GnomeRR 4.0</a>, <a href='/granite10/'>Granite 1.0</a>, <a href='/gtksource5/'>GtkSourceView 5.0</a> (GTK4), <a href='/gweather40/'>GWeather 4.0</a> (GTK4), <a href='/nma10/'>NMA 1.0</a>, <a href='/nma410/'>NMA4 1.0</a> (GTK4), <a href='/panel1/'>Panel 1</a>, <a href='/shumate10/'>Shumate 1.0</a>, <a href='/vte391/'>Vte 391</a> (GTK4), <a href='/xdpgtk310/'>XdpGtk3 1.0</a>, <a href='/xdpgtk410/'>XdpGtk4 1.0</a>"
   ],
   [
     "2022-09-12",
