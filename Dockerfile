@@ -1,5 +1,5 @@
 # We bump this each release to fetch the latest stable GIRs
-FROM registry.fedoraproject.org/fedora:37 AS fetch
+FROM registry.fedoraproject.org/fedora:37 AS build
 
 RUN dnf install -y \
         NetworkManager-libnm-devel cairo-devel colord{,-gtk,-gtk4}-devel \
@@ -22,19 +22,12 @@ RUN dnf install -y \
         udisks-devel upower-devel vte{,291,291-gtk4}-devel \
         webkit2gtk{4.0,4.1,5.0}-devel \
         wireplumber-devel && \
+    dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
+    dnf builddep -y ruby && \
+    dnf install -y --allowerasing openssl1.1-devel python3-pip && \
+    pip3 install -I Markdown==3.3.7 && \
     dnf clean all && \
     rm -rf /var/cache/dnf
-
-
-# We build in fedora:33 for the ruby dependency
-FROM registry.fedoraproject.org/fedora:33 AS build
-
-ENV LANG=C.UTF-8
-
-# These are GIRs from the fetch step
-COPY --from=fetch /usr/share/gir-1.0 /usr/share/gir-1.0
-COPY --from=fetch /usr/share/gnome-shell /usr/share/gnome-shell
-COPY --from=fetch /usr/lib64/mutter-11 /usr/lib64/mutter-11
 
 # These are extra GIRs we can't install with dnf
 COPY lib/docs/scrapers/gnome/girs/*.gir /usr/share/gir-1.0/
@@ -47,13 +40,13 @@ COPY lib/docs/scrapers/gnome/girs/mutter-8 /usr/lib64/mutter-8
 COPY lib/docs/scrapers/gnome/girs/mutter-9 /usr/lib64/mutter-9
 COPY lib/docs/scrapers/gnome/girs/mutter-10 /usr/lib64/mutter-10
 
-# Install devdocs dependencies
-RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
-    dnf builddep -y ruby && \
-    dnf install -y ruby rubygem-bundler ruby-devel python3-markdown \
-                   gobject-introspection-devel && \
-    dnf clean all && \
-    rm -rf /var/cache/dnf
+# Install ruby-2.7.6
+RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/2.7/ruby-2.7.6.tar.gz && \
+    tar -xvzf ruby-2.7.6.tar.gz && \
+    cd ruby-2.7.6 && \
+    ./configure --prefix=/usr/local && \
+    make && \
+    make install
 
 # Install the devdocs application
 COPY . /opt/devdocs/
