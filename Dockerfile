@@ -20,8 +20,7 @@ RUN dnf install -y \
         libshumate-devel libsoup{,3}-devel mutter pango-devel polkit-devel \
         poppler-glib-devel rest{,0.7}-devel telepathy-glib-devel tracker-devel \
         udisks-devel upower-devel vte{,291,291-gtk4}-devel \
-        webkit2gtk{4.0,4.1,5.0}-devel \
-        wireplumber-devel && \
+        webkit2gtk{4.0,4.1,5.0}-devel wireplumber-devel && \
     dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
     dnf builddep -y ruby && \
     dnf install -y --allowerasing openssl1.1-devel python3-pip && \
@@ -42,7 +41,7 @@ COPY lib/docs/scrapers/gnome/girs/mutter-10 /usr/lib64/mutter-10
 
 # Install ruby-2.7.6
 RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/2.7/ruby-2.7.6.tar.gz && \
-    tar -xvzf ruby-2.7.6.tar.gz && \
+    tar -xzf ruby-2.7.6.tar.gz && \
     cd ruby-2.7.6 && \
     ./configure --prefix=/usr/local && \
     make && \
@@ -85,8 +84,8 @@ RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /u
 #   libxml220, win3210, xfixes40, xft20, xlib20, xrandr13
 RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         camel12 colord10 colorhug10 colordgtk10 dbusmenu04 ebook12 \
-        ebookcontacts12 ecal20 edatabook12 edatacal12 edataserver12 \
-        edataserverui12 edataserverui412 evincedocument30 evinceview30 \
+        ebookcontacts12 ecal20 edatabook12 edatacal20 edataserver12 \
+        edataserverui12 edataserverui410 evincedocument30 evinceview30 \
         flatpak10 folks07 folksdummy07 folkseds07 folkstelepathy07 gcab10 gck1 \
         gck2 gcr3 gcr4 gcrui3 gcrgtk34 gcrgtk44 gda50 gda60 gdata00 \
         gdesktopenums30 gdk20 gdk30 gdk40 gdkpixbuf20 gdkx1120 gdkx1130 \
