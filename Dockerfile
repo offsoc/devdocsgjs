@@ -3,7 +3,7 @@ FROM registry.fedoraproject.org/fedora:37 AS fetch
 
 RUN dnf install -y \
         NetworkManager-libnm-devel cairo-devel colord{,-gtk,-gtk4}-devel \
-        evince-devel flatpak-devel folks-devel gcr{,3,-gtk3,-gtk4}-devel \
+        evince-devel flatpak-devel folks-devel gcr{,3}-devel \
         geoclue2-devel geocode-glib-devel glib2-devel gnome-autoar-devel \
         gnome-bluetooth-libs-devel gnome-desktop{3,4}-devel \
         gnome-online-accounts-devel gnome-shell gobject-introspection-devel \
