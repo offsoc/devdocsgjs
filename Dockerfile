@@ -125,7 +125,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         shell01 st10 \
         | tr ' ' '\n' | xargs -L1 -P$(nproc) bundle exec thor docs:generate --force
 
-# We deploy in ruby:2.7.6-alpine for size
+# We deploy in ruby:2.7.7-alpine for size
 #
 # Changes from Dockerfile-alpine:
 # - Copy from the "build" stage instead of the current dir
@@ -133,7 +133,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
 # - Remove `thor docs:download --all` (performed in "build" stage)
 # - Remove `thor assets:compile` until we run in production mode (TODO)
 # - Fix permissions for "rbuser"
-FROM docker.io/library/ruby:2.7.6-alpine
+FROM docker.io/library/ruby:2.7.7-alpine
 
 ENV LANG=C.UTF-8
 ENV ENABLE_SERVICE_WORKER=true
