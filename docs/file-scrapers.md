@@ -23,7 +23,7 @@ and put it in `/path/to/devdocs/docs/`
 Or run the following commands in your terminal:
 
 ```sh
-curl https://storage.googleapis.com/dart-archive/channels/stable/release/$RELEASE/api-docs/dartdocs-gen-api-zip > dartApi.zip; \
+curl https://storage.googleapis.com/dart-archive/channels/stable/release/$RELEASE/api-docs/dartdocs-gen-api.zip > dartApi.zip; \
 unzip dartApi.zip; mv gen-dartdocs docs/dart~$VERSION
 ```
 
@@ -65,7 +65,7 @@ Go to https://www.erlang.org/downloads and download the HTML documentation file.
 
 ```ah
 mkdir --parent docs/erlang\~$VERSION/; \
-curl http://erlang.org/download/otp_doc_html_$RELEASE.tar.gz | \
+curl -L https://github.com/erlang/otp/releases/download/OTP-$RELEASE/otp_doc_html_$RELEASE.tar.gz | \
 bsdtar --extract --file - --directory=docs/erlang\~$VERSION/
 ```
 
