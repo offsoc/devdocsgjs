@@ -1,7 +1,9 @@
 # We bump this each release to fetch the latest stable GIRs
-FROM registry.fedoraproject.org/fedora:37 AS fetch
+FROM registry.fedoraproject.org/fedora:37 AS build
 
-RUN dnf install -y \
+ENV LANG=C.UTF-8
+
+RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ \
         NetworkManager-libnm-devel cairo-devel colord{,-gtk,-gtk4}-devel \
         evince-devel flatpak-devel folks-devel gcr{,3}-devel \
         geoclue2-devel geocode-glib-devel glib2-devel gnome-autoar-devel \
@@ -21,18 +23,11 @@ RUN dnf install -y \
         poppler-glib-devel rest{,0.7}-devel telepathy-glib-devel tracker-devel \
         udisks-devel upower-devel vte{,291,291-gtk4}-devel \
         webkit2gtk{4.0,4.1,5.0}-devel wireplumber-devel && \
+    dnf builddep -y ruby && \
+    dnf install -y --allowerasing openssl1.1-devel python3-pip && \
+    pip3 install -I Markdown==3.3.7 && \
     dnf clean all && \
     rm -rf /var/cache/dnf
-
-# We build in fedora:33 for the ruby dependency
-FROM registry.fedoraproject.org/fedora:33 AS build
-
-ENV LANG=C.UTF-8
-
-# These are GIRs from the fetch step
-COPY --from=fetch /usr/share/gir-1.0 /usr/share/gir-1.0
-COPY --from=fetch /usr/share/gnome-shell /usr/share/gnome-shell
-COPY --from=fetch /usr/lib64/mutter-11 /usr/lib64/mutter-11
 
 # These are extra GIRs we can't install with dnf
 COPY lib/docs/scrapers/gnome/girs/*.gir /usr/share/gir-1.0/
@@ -45,13 +40,13 @@ COPY lib/docs/scrapers/gnome/girs/mutter-8 /usr/lib64/mutter-8
 COPY lib/docs/scrapers/gnome/girs/mutter-9 /usr/lib64/mutter-9
 COPY lib/docs/scrapers/gnome/girs/mutter-10 /usr/lib64/mutter-10
 
-# Install devdocs dependencies
-RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ && \
-    dnf builddep -y ruby && \
-    dnf install -y ruby rubygem-bundler ruby-devel python3-markdown \
-                   gobject-introspection-devel && \
-    dnf clean all && \
-    rm -rf /var/cache/dnf
+# Install ruby-3.2.1
+RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/3.2/ruby-3.2.1.tar.gz && \
+    tar -xvzf ruby-3.2.1.tar.gz && \
+    cd ruby-3.2.1 && \
+    ./configure --prefix=/usr/local && \
+    make && \
+    make install
 
 # Install the devdocs application
 COPY . /opt/devdocs/
@@ -125,7 +120,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         shell01 st10 \
         | tr ' ' '\n' | xargs -L1 -P$(nproc) bundle exec thor docs:generate --force
 
-# We deploy in ruby:2.7.7-alpine for size
+# We deploy in ruby:3.2.1-alpine for size
 #
 # Changes from Dockerfile-alpine:
 # - Copy from the "build" stage instead of the current dir
