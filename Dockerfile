@@ -23,7 +23,7 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ \
         poppler-glib-devel rest{,0.7}-devel telepathy-glib-devel tracker-devel \
         udisks-devel upower-devel vte{,291,291-gtk4}-devel \
         webkit2gtk{4.0,4.1,5.0}-devel wireplumber-devel && \
-    dnf builddep -y ruby && \
+    dnf builddep -y gobject-introspection ruby && \
     dnf install -y --allowerasing openssl1.1-devel python3-pip && \
     pip3 install -I Markdown==3.3.7 && \
     dnf clean all && \
@@ -47,6 +47,17 @@ RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/3.2/ruby-3.2.1.tar.gz && \
     ./configure --prefix=/usr/local && \
     make && \
     make install
+
+# Install gobject-introspection with some, as yet, unmerged patches
+#
+# - gobject-introspection!393 (submitted after hard code freeze)
+RUN git clone https://gitlab.gnome.org/andyholmes/gobject-introspection.git \
+        --branch devdocs-fixes --depth=1 /opt/gobject-introspection && \
+    cd /opt/gobject-introspection && \
+    meson setup -Ddoctool=enabled _build && \
+    meson compile -C _build && \
+    meson install -C _build
+ENV G_IR_DOC_TOOL=/usr/local/bin/g-ir-doc-tool
 
 # Install the devdocs application
 COPY . /opt/devdocs/
