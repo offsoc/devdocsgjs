@@ -1,5 +1,5 @@
 # We bump this each release to fetch the latest stable GIRs
-FROM registry.fedoraproject.org/fedora:37 AS build
+FROM registry.fedoraproject.org/fedora:38 AS build
 
 ENV LANG=C.UTF-8
 
@@ -22,7 +22,7 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ \
         libshumate-devel libsoup{,3}-devel mutter pango-devel polkit-devel \
         poppler-glib-devel rest{,0.7}-devel telepathy-glib-devel tracker-devel \
         udisks-devel upower-devel vte{,291,291-gtk4}-devel \
-        webkit2gtk{4.0,4.1,5.0}-devel wireplumber-devel && \
+        webkit2gtk{4.0,4.1,6.0}-devel wireplumber-devel && \
     dnf builddep -y ruby && \
     dnf install -y --allowerasing openssl1.1-devel python3-pip && \
     pip3 install -I Markdown==3.3.7 && \
@@ -39,6 +39,7 @@ COPY lib/docs/scrapers/gnome/girs/mutter-7 /usr/lib64/mutter-7
 COPY lib/docs/scrapers/gnome/girs/mutter-8 /usr/lib64/mutter-8
 COPY lib/docs/scrapers/gnome/girs/mutter-9 /usr/lib64/mutter-9
 COPY lib/docs/scrapers/gnome/girs/mutter-10 /usr/lib64/mutter-10
+COPY lib/docs/scrapers/gnome/girs/mutter-11 /usr/lib64/mutter-11
 
 # Install ruby-3.2.1
 RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/3.2/ruby-3.2.1.tar.gz && \
@@ -71,12 +72,13 @@ RUN bundle exec thor gir:generate_all /usr/share/gir-1.0 && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-8 && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-9 && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-10 && \
-    bundle exec thor gir:generate_all /usr/lib64/mutter-11
+    bundle exec thor gir:generate_all /usr/lib64/mutter-11 && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-12
 
 # The GNOME Shell GIRs need to include the current mutter GIRs
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/Gvc-1.0.gir
-RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-0.1.gir --include /usr/lib64/mutter-11
-RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /usr/lib64/mutter-11
+RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-0.1.gir --include /usr/lib64/mutter-12
+RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-1.0.gir --include /usr/lib64/mutter-12
 
 # Build docsets
 #
@@ -106,8 +108,9 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         restextras07 restextras10 rsvg20 secret1 shumate10 soup24 soup30 \
         soupgnome24 telepathyglib012 tracker20 tracker30 trackercontrol20 \
         trackerminer20 upowerglib10 vte00 vte291 vte391 webkit240 webkit241 \
-        webkit250 webkit2webextension40 webkit2webextension41 \
-        webkit2webextension50 wp04 xdp10 xdpgtk310 xdpgtk410 \
+        webkit250 webkit260 webkit2webextension40 webkit2webextension41 \
+        webkit2webextension50 webkit2webextension60 wp04 xdp10 xdpgtk310 \
+        xdpgtk410 \
         cally3 clutter3 clutterx113 cogl3 coglpango3 meta3 \
         cally4 clutter4 clutterx114 cogl4 coglpango4 meta4 \
         cally5 clutter5 clutterx115 cogl5 coglpango5 meta5 \
@@ -117,6 +120,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally9 clutter9 cogl9 coglpango9 meta9 \
         cally10 clutter10 cogl10 coglpango10 meta10 \
         cally11 clutter11 cogl11 coglpango11 meta11 \
+        cally12 clutter12 cogl12 coglpango12 meta12 \
         shell01 st10 \
         | tr ' ' '\n' | xargs -L1 -P$(nproc) bundle exec thor docs:generate --force
 
