@@ -1,5 +1,10 @@
 [
   [
+    "2023-03-14",
+    "New documentations: <a href='/cally12/'>Cally 12</a>, <a href='/clutter12/'>Clutter 12</a>, <a href='/cogl12/'>Cogl 12</a>, <a href='/coglpango12/'>CoglPango 12</a>, <a href='/meta12/'>Mutter 12</a>, <a href='/shell12/'>Shell 12 (GNOME 44)</a>, <a href='/st12/'>St 12 (GNOME 44)</a>, <a href='/shell9/'>Shell 9 (GNOME 41)</a>, <a href='/st9/'>St 9 (GNOME 41)</a>, <a href='/shell10/'>Shell 10 (GNOME 42)</a>, <a href='/st10/'>St 10 (GNOME 42)</a>, <a href='/shell11/'>Shell 11 (GNOME 43)</a>, <a href='/st11/'>St 11 (GNOME 43)</a>, <a href='/gssdp16/'>GSSDP 1.6</a>, <a href='/gupnp16/'>GUPnP 1.6</a>",
+    "Removed documentations: <a href='/gcrgtk34/'>GcrGtk3 4 (GTK3)</a>, <a href='/gcrgtk44/'>GcrGtk4 4 (GTK4)</a>"
+  ],
+  [
     "2022-09-17",
     "New documentations: <a href='/colord10/'>Colord 1.0</a>, <a href='/colordgtk10/'>ColordGtk 1.0</a>, <a href='/colorhug10/'>Colorhug 1.0</a>, <a href='/edatabook12/'>EDataBook 1.2</a>, <a href='/edatacal12/'>EDataCal 1.2</a>, <a href='/edataserverui412/'>EDataServerUI4 1.2</a> (GTK4), <a href='/flatpak10/'>Flatpak 1.0</a>, <a href='/gnomeautoar01/'>GnomeAutoar 0.1</a>, <a href='/gnomeautoargtk01/'>GnomeAutoar 0.1</a>, <a href='/gnomebg40/'>GnomeBG 4.0</a>, <a href='/gnomedesktop30/'>GnomeDesktop 3.0</a>, <a href='/gnomedesktop40/'>GnomeDesktop 4.0</a>, <a href='/gnomerr40/'>GnomeRR 4.0</a>, <a href='/granite10/'>Granite 1.0</a>, <a href='/gtksource5/'>GtkSourceView 5.0</a> (GTK4), <a href='/gweather40/'>GWeather 4.0</a> (GTK4), <a href='/nma10/'>NMA 1.0</a>, <a href='/nma410/'>NMA4 1.0</a> (GTK4), <a href='/panel1/'>Panel 1</a>, <a href='/shumate10/'>Shumate 1.0</a>, <a href='/vte391/'>Vte 391</a> (GTK4), <a href='/xdpgtk310/'>XdpGtk3 1.0</a>, <a href='/xdpgtk410/'>XdpGtk4 1.0</a>"
   ],
