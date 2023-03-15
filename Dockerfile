@@ -70,9 +70,9 @@ RUN bundle exec thor gir:generate_all /usr/share/gir-1.0 && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-6 && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-7 && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-8 && \
-    bundle exec thor gir:generate_all /usr/lib64/mutter-9 && \
-    bundle exec thor gir:generate_all /usr/lib64/mutter-10 && \
-    bundle exec thor gir:generate_all /usr/lib64/mutter-11 && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-9 --include /usr/share/gnome-shell && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-10 --include /usr/share/gnome-shell && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-11 --include /usr/share/gnome-shell && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-12
 
 # The GNOME Shell GIRs need to include the current mutter GIRs
@@ -117,9 +117,9 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally6 clutter6 clutterx116 cogl6 coglpango6 meta6 \
         cally7 clutter7 clutterx117 cogl7 coglpango7 meta7 \
         cally8 clutter8 clutterx118 cogl8 coglpango8 meta8 \
-        cally9 clutter9 cogl9 coglpango9 meta9 \
-        cally10 clutter10 cogl10 coglpango10 meta10 \
-        cally11 clutter11 cogl11 coglpango11 meta11 \
+        cally9 clutter9 cogl9 coglpango9 meta9 shell9 st9 \
+        cally10 clutter10 cogl10 coglpango10 meta10 shell10 st10 \
+        cally11 clutter11 cogl11 coglpango11 meta11 shell11 st11 \
         cally12 clutter12 cogl12 coglpango12 meta12 shell12 st12 \
         | tr ' ' '\n' | xargs -L1 -P$(nproc) bundle exec thor docs:generate --force
 

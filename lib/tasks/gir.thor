@@ -12,7 +12,8 @@ class GirCLI < Thor
     super
   end
 
-  desc 'generate_all', 'Generate scrapers from all installed GIR files'
+  desc 'generate_all [--include <path>]', 'Generate scrapers from all installed GIR files'
+  option :include, type: :string
   def generate_all(gir_dir = nil)
     if gir_dir
       glob = Dir.glob(gir_dir + '/*.gir')
