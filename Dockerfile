@@ -41,10 +41,10 @@ COPY lib/docs/scrapers/gnome/girs/mutter-9 /usr/lib64/mutter-9
 COPY lib/docs/scrapers/gnome/girs/mutter-10 /usr/lib64/mutter-10
 COPY lib/docs/scrapers/gnome/girs/mutter-11 /usr/lib64/mutter-11
 
-# Install ruby-3.2.1
-RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/3.2/ruby-3.2.1.tar.gz && \
-    tar -xvzf ruby-3.2.1.tar.gz && \
-    cd ruby-3.2.1 && \
+# Install ruby-3.2.2
+RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/3.2/ruby-3.2.2.tar.gz && \
+    tar -xvzf ruby-3.2.2.tar.gz && \
+    cd ruby-3.2.2 && \
     ./configure --prefix=/usr/local && \
     make && \
     make install
@@ -123,7 +123,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally12 clutter12 cogl12 coglpango12 meta12 shell12 st12 \
         | tr ' ' '\n' | xargs -L1 -P$(nproc) bundle exec thor docs:generate --force
 
-# We deploy in ruby:3.2.1-alpine for size
+# We deploy in ruby:3.2.2-alpine for size
 #
 # Changes from Dockerfile-alpine:
 # - Copy from the "build" stage instead of the current dir
