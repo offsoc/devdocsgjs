@@ -131,7 +131,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
 # - Remove `thor docs:download --all` (performed in "build" stage)
 # - Remove `thor assets:compile` until we run in production mode (TODO)
 # - Fix permissions for "rbuser"
-FROM docker.io/library/ruby:3.2.1-alpine
+FROM docker.io/library/ruby:3.2.2-alpine
 
 ENV LANG=C.UTF-8
 ENV ENABLE_SERVICE_WORKER=true
