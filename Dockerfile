@@ -16,8 +16,8 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ \
         ibus-devel keybinder3-devel libappindicator-gtk3-devel \
         libadwaita-devel libappstream-glib-devel libgcab1-devel libgdata-devel \
         libgda-devel libgda5-devel libgudev-devel libgweather-devel \
-        libgweather4-devel libgxps-devel libhandy1-devel libnma{,-gtk4}-devel \
-        libnotify-devel libpanel-devel libpeas-devel \
+        libgweather4-devel libgxps-devel libhandy1-devel libmanette-devel \
+        libnma{,-gtk4}-devel libnotify-devel libpanel-devel libpeas-devel \
         libportal{,-gtk3,-gtk4}-devel librsvg2-devel libsecret-devel \
         libshumate-devel libsoup{,3}-devel mutter pango-devel polkit-devel \
         poppler-glib-devel rest{,0.7}-devel telepathy-glib-devel tracker-devel \
@@ -103,14 +103,15 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         gtk30 gtk40 gtkosxapplication10 gtksource30 gtksource4 gtksource5 \
         gudev10 gupnp12 gupnp16 gupnpav10 gupnpdlna20 gupnpdlnagst20 \
         gupnpigd16 gvc10 gweather30 gweather40 gxps01 handy1 ibus10 \
-        javascriptcore40 javascriptcore50 json10 keybinder30 nm10 nma10 nma410 \
-        notify07 panel1 pango10 pangocairo10 pangoft210 pangoxft10 peas10 \
-        peasgtk10 polkit10 polkitagent10 poppler018 rest07 rest10 restextras07 \
-        restextras10 rsvg20 secret1 shumate10 soup24 soup30 soupgnome24 \
-        telepathyglib012 tracker20 tracker30 trackercontrol20 trackerminer20 \
-        upowerglib10 vte00 vte291 vte391 webkit240 webkit241 webkit250 \
-        webkit2webextension40 webkit2webextension41 webkit2webextension50 wp04 \
-        xdp10 xdpgtk310 xdpgtk410 \
+        javascriptcore40 javascriptcore50 json10 keybinder30 manette02 nm10 \
+        nma10 nma410 notify07 panel1 pango10 pangocairo10 pangoft210 \
+        pangoxft10 peas10 peasgtk10 polkit10 polkitagent10 poppler018 rest07 \
+        rest10 restextras07 restextras10 rsvg20 secret1 shumate10 soup24 \
+        soup30 soupgnome24 telepathyglib012 tracker20 tracker30 \
+        trackercontrol20 trackerminer20 upowerglib10 vte00 vte291 vte391 \
+        webkit240 webkit241 webkit250 webkit2webextension40 \
+        webkit2webextension41 webkit2webextension50 wp04 xdp10 xdpgtk310 \
+        xdpgtk410 \
         cally3 clutter3 clutterx113 cogl3 coglpango3 meta3 \
         cally4 clutter4 clutterx114 cogl4 coglpango4 meta4 \
         cally5 clutter5 clutterx115 cogl5 coglpango5 meta5 \

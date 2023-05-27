@@ -59,6 +59,9 @@
     "^gsk\\d+",
     "^gtk\\d+"
   ],
+  "manette": [
+    "^manette\\d+",
+  ],
   "networkmanager": [
     "^networkmanager\\d+",
     "^nm10",

@@ -1,5 +1,9 @@
 [
   [
+    "2023-05-27",
+    "New documentations: <a href='/manette02/'>Manette 0.2</a>"
+  ],
+  [
     "2023-03-14",
     "New documentations: <a href='/cally12/'>Cally 12</a>, <a href='/clutter12/'>Clutter 12</a>, <a href='/cogl12/'>Cogl 12</a>, <a href='/coglpango12/'>CoglPango 12</a>, <a href='/meta12/'>Mutter 12</a>, <a href='/shell12/'>Shell 12 (GNOME 44)</a>, <a href='/st12/'>St 12 (GNOME 44)</a>, <a href='/shell9/'>Shell 9 (GNOME 41)</a>, <a href='/st9/'>St 9 (GNOME 41)</a>, <a href='/shell10/'>Shell 10 (GNOME 42)</a>, <a href='/st10/'>St 10 (GNOME 42)</a>, <a href='/shell11/'>Shell 11 (GNOME 43)</a>, <a href='/st11/'>St 11 (GNOME 43)</a>, <a href='/gssdp16/'>GSSDP 1.6</a>, <a href='/gupnp16/'>GUPnP 1.6</a>",
     "Removed documentations: <a href='/gcrgtk34/'>GcrGtk3 4 (GTK3)</a>, <a href='/gcrgtk44/'>GcrGtk4 4 (GTK4)</a>"
