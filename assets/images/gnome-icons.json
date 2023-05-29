@@ -60,7 +60,7 @@
     "^gtk\\d+"
   ],
   "manette": [
-    "^manette\\d+",
+    "^manette\\d+"
   ],
   "networkmanager": [
     "^networkmanager\\d+",
