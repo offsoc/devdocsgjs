@@ -19,4 +19,8 @@ promote:
   script:
     - buildah pull quay.io/gnome_infrastructure/devdocsgjs:staging
     - buildah tag quay.io/gnome_infrastructure/devdocsgjs:staging quay.io/gnome_infrastructure/devdocsgjs:latest
-    - buildah push quay.io/gnome_infrastructure/devdocsgjs:latest
+    - >-
+      if [ "$CI_COMMIT_REF_PROTECTED" == "true" ]; then
+        buildah login -u ${OCI_REGISTRY_USER} -p ${OCI_REGISTRY_PASSWORD} ${OCI_REGISTRY}
+        buildah push quay.io/gnome_infrastructure/devdocsgjs:latest
+      fi
