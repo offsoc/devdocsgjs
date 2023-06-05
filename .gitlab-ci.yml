@@ -2,6 +2,19 @@ include:
   - project: 'Infrastructure/openshift-images/ci-templates'
     file: '/buildah.yml'
 
-devdocsgjs:
+staging:
   extends:
     - .buildah
+  variables:
+    OCI_IMAGE_NAME: devdocsgjs
+    OCI_IMAGE_TAG: staging
+
+prod:
+  extends:
+    - .buildah
+  variables:
+    OCI_IMAGE_NAME: devdocsgjs
+    OCI_IMAGE_TAG: latest
+  rules:
+  - if: $CI_COMMIT_REF_NAME == "gnome"
+    when: manual
