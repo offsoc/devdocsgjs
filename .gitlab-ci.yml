@@ -9,12 +9,14 @@ staging:
     OCI_IMAGE_NAME: devdocsgjs
     OCI_IMAGE_TAG: staging
 
-prod:
-  extends:
-    - .buildah
+promote:
+  interruptible: true
+  image:
+    name: quay.io/buildah/stable:latest
   variables:
-    OCI_IMAGE_NAME: devdocsgjs
-    OCI_IMAGE_TAG: latest
-  rules:
-  - if: $CI_COMMIT_REF_NAME == "gnome"
-    when: manual
+    STORAGE_DRIVER: vfs
+    BUILDAH_ISOLATION: chroot
+  script:
+    - buildah pull quay.io/gnome_infrastructure/devdocsgjs:staging
+    - buildah tag quay.io/gnome_infrastructure/devdocsgjs:staging quay.io/gnome_infrastructure/devdocsgjs:latest
+    - buildah push quay.io/gnome_infrastructure/devdocsgjs:latest
