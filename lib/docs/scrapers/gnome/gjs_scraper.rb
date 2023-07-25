@@ -1,7 +1,7 @@
 module Docs
-  class GjsScraper < Github
+  class GjsScraper < FileScraper
     self.name = 'GJS'
-    self.base_url = 'https://github.com/GNOME/gjs/blob/master/doc/'
+    self.type = 'gjs'
     self.root_path = 'README.md'
     self.initial_paths = %w[
       ByteArray
@@ -26,7 +26,6 @@ module Docs
 
     html_filters.push 'gjs_scraper/entries', 'gjs_scraper/clean_html'
 
-    options[:container] = '.markdown-body'
     options[:title] = 'GJS'
     options[:skip_links] = true
 
