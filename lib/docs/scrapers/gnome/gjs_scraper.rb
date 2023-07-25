@@ -1,7 +1,7 @@
 module Docs
   class GjsScraper < FileScraper
     self.name = 'GJS'
-    self.type = 'gjs'
+    self.type = 'gir'
     self.root_path = 'README.md'
     self.initial_paths = %w[
       ByteArray
