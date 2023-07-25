@@ -4,6 +4,7 @@ FROM registry.fedoraproject.org/fedora:38 AS build
 ENV LANG=C.UTF-8
 
 RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ \
+        python3-markdown-it-py \
         NetworkManager-libnm-devel cairo-devel colord{,-gtk,-gtk4}-devel \
         evince-devel flatpak-devel folks-devel gcr{,3}-devel \
         geoclue2-devel geocode-glib-devel glib2-devel gnome-autoar-devel \
@@ -60,7 +61,11 @@ RUN bundle config set --local deployment 'true' && \
 RUN bundle exec thor docs:download css javascript jasmine typescript
 
 # GJS documentation
-RUN bundle exec thor docs:generate gjs_scraper --force
+RUN git clone https://gitlab.gnome.org/GNOME/gjs.git && \
+    cd gjs/doc/ && \
+    mkdir -p /opt/devdocs/docs/gjs && \
+    find . -type f -name "*.md" -exec sh -c "markdown-it {} > /opt/devdocs/docs/gjs/{}" \;
+RUN bundle exec thor docs:generate gjs_scraper --force --debug
 
 # Generate scrapers
 RUN bundle exec thor gir:generate_all /usr/share/gir-1.0 && \
