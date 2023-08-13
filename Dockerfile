@@ -1,5 +1,5 @@
 # We bump this each release to fetch the latest stable GIRs
-FROM registry.fedoraproject.org/fedora:38 AS build
+FROM registry.fedoraproject.org/fedora:39 AS build
 
 ENV LANG=C.UTF-8
 
@@ -7,23 +7,23 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ \
         python3-markdown-it-py \
         NetworkManager-libnm-devel cairo-devel colord{,-gtk,-gtk4}-devel \
         evince-devel flatpak-devel folks-devel gcr{,3}-devel \
-        geoclue2-devel geocode-glib-devel glib2-devel gnome-autoar-devel \
+        geoclue2-devel geocode-glib2-devel glib2-devel gnome-autoar-devel \
         gnome-bluetooth-libs-devel gnome-desktop{3,4}-devel \
         gnome-online-accounts-devel gnome-shell gobject-introspection-devel \
         gom-devel granite-devel graphene-devel grilo-devel \
         gsettings-desktop-schemas-devel gsound-devel gspell-devel \
         gstreamer1-{,plugins-base-,plugins-bad-free-}devel gtk{2,3,4}-devel \
         gtksourceview{3,4,5}-devel gupnp{,-dlna,-av}-devel harfbuzz-devel \
-        ibus-devel keybinder3-devel libappindicator-gtk3-devel \
-        libadwaita-devel libappstream-glib-devel libgcab1-devel libgdata-devel \
-        libgda-devel libgda5-devel libgudev-devel libgweather-devel \
-        libgweather4-devel libgxps-devel libhandy1-devel libmanette-devel \
-        libnma{,-gtk4}-devel libnotify-devel libpanel-devel libpeas-devel \
-        libportal{,-gtk3,-gtk4}-devel librsvg2-devel libsecret-devel \
-        libshumate-devel libsoup{,3}-devel mutter pango-devel polkit-devel \
-        poppler-glib-devel rest{,0.7}-devel telepathy-glib-devel tracker-devel \
-        udisks-devel upower-devel vte{,291,291-gtk4}-devel \
-        webkit2gtk{4.0,4.1}-devel wireplumber-devel && \
+        ibus-devel javascriptcoregtk6.0-devel keybinder3-devel \
+        libappindicator-gtk3-devel libadwaita-devel libappstream-glib-devel \
+        libgcab1-devel libgdata-devel libgda-devel libgda5-devel \
+        libgudev-devel libgweather4-devel libgxps-devel libhandy1-devel \
+        libmanette-devel libnma{,-gtk4}-devel libnotify-devel libpanel-devel \
+        libpeas-devel libportal{,-gtk3,-gtk4}-devel librsvg2-devel \
+        libsecret-devel libshumate-devel libsoup{,3}-devel mutter pango-devel \
+        polkit-devel poppler-glib-devel rest{,0.7}-devel telepathy-glib-devel \
+        tracker-devel udisks-devel upower-devel vte{,291,291-gtk4}-devel \
+        webkit2gtk{4.0,4.1}-devel webkitgtk6.0 wireplumber-devel && \
     dnf builddep -y ruby && \
     dnf install -y --allowerasing openssl1.1-devel python3-pip && \
     pip3 install -I Markdown==3.3.7 && \
@@ -41,6 +41,7 @@ COPY lib/docs/scrapers/gnome/girs/mutter-8 /usr/lib64/mutter-8
 COPY lib/docs/scrapers/gnome/girs/mutter-9 /usr/lib64/mutter-9
 COPY lib/docs/scrapers/gnome/girs/mutter-10 /usr/lib64/mutter-10
 COPY lib/docs/scrapers/gnome/girs/mutter-11 /usr/lib64/mutter-11
+COPY lib/docs/scrapers/gnome/girs/mutter-12 /usr/lib64/mutter-12
 
 # Install ruby-3.2.2
 RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/3.2/ruby-3.2.2.tar.gz && \
@@ -78,12 +79,13 @@ RUN bundle exec thor gir:generate_all /usr/share/gir-1.0 && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-9 --include /usr/share/gnome-shell && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-10 --include /usr/share/gnome-shell && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-11 --include /usr/share/gnome-shell && \
-    bundle exec thor gir:generate_all /usr/lib64/mutter-12
+    bundle exec thor gir:generate_all /usr/lib64/mutter-12 --include /usr/share/gnome-shell && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-13
 
 # The GNOME Shell GIRs need to include the current mutter GIRs
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/Gvc-1.0.gir
-RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-12.gir --include /usr/lib64/mutter-12
-RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-12.gir --include /usr/lib64/mutter-12
+RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-13.gir --include /usr/lib64/mutter-13
+RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-13.gir --include /usr/lib64/mutter-13
 
 # Build docsets
 #
@@ -97,7 +99,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         flatpak10 folks07 folksdummy07 folkseds07 folkstelepathy07 gcab10 gck1 \
         gck2 gcr3 gcr4 gcrui3 gda50 gda60 gdata00 gdesktopenums30 gdk20 gdk30 \
         gdk40 gdkpixbuf20 gdkx1120 gdkx1130 gdkx1140 gee08 geoclue20 \
-        geocodeglib10 gio20 girepository20 glib20 gnomeautoar01 \
+        geocodeglib10 geocodeglib20 gio20 girepository20 glib20 gnomeautoar01 \
         gnomeautoargtk01 gnomebluetooth10 gnomebluetooth30 gnomebg40 \
         gnomedesktop30  gnomedesktop40 gnomerr40 goa10 gobject20 gom10 \
         granite10 graphene10 grl03 grlnet03 grlpls03 gsk40 gsound10 gspell1 \
@@ -108,15 +110,15 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         gtk30 gtk40 gtkosxapplication10 gtksource30 gtksource4 gtksource5 \
         gudev10 gupnp12 gupnp16 gupnpav10 gupnpdlna20 gupnpdlnagst20 \
         gupnpigd16 gvc10 gweather30 gweather40 gxps01 handy1 ibus10 \
-        javascriptcore40 javascriptcore50 json10 keybinder30 manette02 nm10 \
-        nma10 nma410 notify07 panel1 pango10 pangocairo10 pangoft210 \
-        pangoxft10 peas10 peasgtk10 polkit10 polkitagent10 poppler018 rest07 \
-        rest10 restextras07 restextras10 rsvg20 secret1 shumate10 soup24 \
-        soup30 soupgnome24 telepathyglib012 tracker20 tracker30 \
-        trackercontrol20 trackerminer20 upowerglib10 vte00 vte291 vte391 \
-        webkit240 webkit241 webkit250 webkit2webextension40 \
-        webkit2webextension41 webkit2webextension50 wp04 xdp10 xdpgtk310 \
-        xdpgtk410 \
+        javascriptcore40 javascriptcore50 javascriptcore60 json10 keybinder30 \
+        manette02 nm10 nma10 nma410 notify07 panel1 pango10 pangocairo10 \
+        pangoft210 pangoxft10 peas10 peasgtk10 polkit10 polkitagent10 \
+        poppler018 rest07 rest10 restextras07 restextras10 rsvg20 secret1 \
+        shumate10 soup24 soup30 soupgnome24 telepathyglib012 tracker20 \
+        tracker30 trackercontrol20 trackerminer20 upowerglib10 vte00 vte291 \
+        vte391 webkit240 webkit241 webkit250 webkit60 webkit2webextension40 \
+        webkit2webextension41 webkit2webextension50 \
+        webkitwebprocessextension60 wp04 xdp10 xdpgtk310 xdpgtk410 \
         cally3 clutter3 clutterx113 cogl3 coglpango3 meta3 \
         cally4 clutter4 clutterx114 cogl4 coglpango4 meta4 \
         cally5 clutter5 clutterx115 cogl5 coglpango5 meta5 \
@@ -127,6 +129,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally10 clutter10 cogl10 coglpango10 meta10 shell10 st10 \
         cally11 clutter11 cogl11 coglpango11 meta11 shell11 st11 \
         cally12 clutter12 cogl12 coglpango12 meta12 shell12 st12 \
+        cally13 clutter13 cogl13 coglpango13 meta13 shell13 st13 \
         | tr ' ' '\n' | xargs -L1 -P$(nproc) bundle exec thor docs:generate --force
 
 # We deploy in ruby:3.2.2-alpine for size
