@@ -1,5 +1,9 @@
 [
   [
+    "2023-10-12",
+    "New documentations: <a href='/snapd2/'>Snapd 2</a>"
+  ],
+  [
     "2023-08-13",
     "New documentations: <a href='/cally13/'>Cally 13</a>, <a href='/clutter13/'>Clutter 13</a>, <a href='/cogl13/'>Cogl 13</a>, <a href='/coglpango13/'>CoglPango 13</a>, <a href='/meta13/'>Mutter 13</a>, <a href='/shell13/'>Shell 13 (GNOME 45)</a>, <a href='/st13/'>St 13 (GNOME 45)</a>, <a href='/geocodeglib20/'>GeocodeGlib 2.0</a>, <a href='/gweather40/'>GWeather 4.0</a>, <a href='/javascriptcore60/'>JavaScriptCore 6.0</a>, <a href='/webkit60/'>WebKit 6.0</a>, <a href='/webkitwebprocessextension60/'>WebKitWebProcessExtension 6.0</a>"
   ],

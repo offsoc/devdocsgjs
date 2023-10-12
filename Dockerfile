@@ -114,7 +114,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         manette02 nm10 nma10 nma410 notify07 panel1 pango10 pangocairo10 \
         pangoft210 pangoxft10 peas10 peasgtk10 polkit10 polkitagent10 \
         poppler018 rest07 rest10 restextras07 restextras10 rsvg20 secret1 \
-        shumate10 soup24 soup30 soupgnome24 telepathyglib012 tracker20 \
+        shumate10 snapd2 soup24 soup30 soupgnome24 telepathyglib012 tracker20 \
         tracker30 trackercontrol20 trackerminer20 upowerglib10 vte00 vte291 \
         vte391 webkit240 webkit241 webkit250 webkit60 webkit2webextension40 \
         webkit2webextension41 webkit2webextension50 \
