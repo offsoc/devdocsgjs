@@ -43,10 +43,10 @@ COPY lib/docs/scrapers/gnome/girs/mutter-10 /usr/lib64/mutter-10
 COPY lib/docs/scrapers/gnome/girs/mutter-11 /usr/lib64/mutter-11
 COPY lib/docs/scrapers/gnome/girs/mutter-12 /usr/lib64/mutter-12
 
-# Install ruby-3.2.2
-RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/3.2/ruby-3.2.2.tar.gz && \
-    tar -xvzf ruby-3.2.2.tar.gz && \
-    cd ruby-3.2.2 && \
+# Install ruby-3.3.0
+RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0.tar.gz && \
+    tar -xvzf ruby-3.3.0.tar.gz && \
+    cd ruby-3.3.0 && \
     ./configure --prefix=/usr/local && \
     make && \
     make install
@@ -132,7 +132,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally13 clutter13 cogl13 coglpango13 meta13 shell13 st13 \
         | tr ' ' '\n' | xargs -L1 -P$(nproc) bundle exec thor docs:generate --force
 
-# We deploy in ruby:3.2.2-alpine for size
+# We deploy in ruby:3.3.0-alpine for size
 #
 # Changes from Dockerfile-alpine:
 # - Copy from the "build" stage instead of the current dir
@@ -140,7 +140,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
 # - Remove `thor docs:download --all` (performed in "build" stage)
 # - Remove `thor assets:compile` until we run in production mode (TODO)
 # - Fix permissions for "rbuser"
-FROM docker.io/library/ruby:3.2.2-alpine
+FROM docker.io/library/ruby:3.3.0-alpine
 
 ENV LANG=C.UTF-8
 ENV ENABLE_SERVICE_WORKER=true
