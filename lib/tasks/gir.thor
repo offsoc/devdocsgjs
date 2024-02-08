@@ -88,7 +88,7 @@ class GirCLI < Thor
         Gem::Version.new(ver.to_s.chomp '.')  # they can have stray periods
       end
       return nil if versions == []
-      versions.max.to_s << '+'
+      versions.max.to_s + '+'
     end
 
     def compute_release(gir, scraper_info)
