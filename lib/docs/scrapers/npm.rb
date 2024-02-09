@@ -2,7 +2,7 @@ module Docs
   class Npm < UrlScraper
     self.name = 'npm'
     self.type = 'npm'
-    self.release = '10.2.5'
+    self.release = '8.3.0'
     self.base_url = 'https://docs.npmjs.com/'
     self.force_gzip = true
     self.links = {
@@ -12,8 +12,7 @@ module Docs
 
     html_filters.push 'npm/entries', 'npm/clean_html'
 
-    options[:download_images] = false
-    # options[:max_image_size] = 130_000
+    options[:max_image_size] = 130_000
 
     options[:skip] = [
       'all',
@@ -32,8 +31,6 @@ module Docs
       /\Apolicies/,
       /cli\/v6/,
       /cli\/v7/,
-      /cli\/v8/,
-      /cli\/v9/,
       /\/\Z/ # avoid pages with a trailing slash, those pages mess up the entries
     ]
 

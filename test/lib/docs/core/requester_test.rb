@@ -1,7 +1,7 @@
 require_relative '../../../test_helper'
 require_relative '../../../../lib/docs'
 
-class DocsRequesterTest < Minitest::Spec
+class DocsRequesterTest < MiniTest::Spec
   def stub_request(url)
     Typhoeus.stub(url).and_return(Typhoeus::Response.new)
   end

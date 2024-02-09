@@ -1,7 +1,7 @@
 require_relative '../../../test_helper'
 require_relative '../../../../lib/docs'
 
-class DocsFileStoreTest < Minitest::Spec
+class DocsFileStoreTest < MiniTest::Spec
   let :store do
     Docs::FileStore.new(tmp_path)
   end

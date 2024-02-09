@@ -12,7 +12,6 @@ module Docs
         end
 
         css('.header .sub-title', 'hr', '.table-tabs').remove
-        css('.copy').remove
 
         # fix ul section that contains summaries or tables
         css('ul').each do |node|

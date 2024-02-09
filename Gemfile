@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '3.3.0'
+ruby '3.2.2'
 
 gem 'activesupport', require: false
 gem 'html-pipeline'
@@ -14,6 +14,7 @@ gem 'yajl-ruby', require: false
 group :app do
   gem 'browser'
   gem 'chunky_png'
+  gem 'coffee-script'
   gem 'erubi'
   gem 'image_optim_pack', platforms: :ruby
   gem 'image_optim'
@@ -31,7 +32,7 @@ end
 
 group :production do
   gem 'newrelic_rpm'
-  gem "terser"
+  gem 'uglifier'
 end
 
 group :development do

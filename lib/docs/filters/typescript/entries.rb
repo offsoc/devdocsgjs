@@ -21,15 +21,8 @@ module Docs
       def get_type
         if DEPRECATED_PAGES.include? slug
           'Handbook (deprecated)'
-        elsif slug.include?('declaration-files')
-          'Declaration Files'
-        elsif slug == 'download'
-          'Handbook'
-        elsif slug == 'why-create-typescript'
-          'Handbook'
         else
-          button = at_css('nav#sidebar > ul > li.open.highlighted > button')
-          button ? button.content : name
+          name
         end
       end
 
@@ -46,7 +39,7 @@ module Docs
       end
 
       def handbook_entries
-        css('h2', 'h3:has(code)').each_with_object [] do |node, entries|
+        css('h2').each_with_object [] do |node, entries|
           entries << ["#{name}: #{node.content}", node['id']] if node['id']
         end
       end

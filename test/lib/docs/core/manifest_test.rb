@@ -1,7 +1,7 @@
 require_relative '../../../test_helper'
 require_relative '../../../../lib/docs'
 
-class ManifestTest < Minitest::Spec
+class ManifestTest < MiniTest::Spec
   let :doc do
     doc = Class.new Docs::Scraper
     doc.name = 'TestDoc'

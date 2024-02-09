@@ -1,7 +1,7 @@
 require_relative '../../../../test_helper'
 require_relative '../../../../../lib/docs'
 
-class ParseCfEmailFilterTest < Minitest::Spec
+class ParseCfEmailFilterTest < MiniTest::Spec
   include FilterTestHelper
   self.filter_class = Docs::ParseCfEmailFilter
 

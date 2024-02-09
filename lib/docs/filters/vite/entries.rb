@@ -8,7 +8,7 @@ module Docs
       end
 
       def get_type
-        name
+        at_css('aside nav .is-active').content.strip
       end
 
       def additional_entries

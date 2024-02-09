@@ -1,7 +1,7 @@
 require_relative '../../../test_helper'
 require_relative '../../../../lib/docs'
 
-class DocsResponseTest < Minitest::Spec
+class DocsResponseTest < MiniTest::Spec
   let :response do
     Typhoeus::Response.new(options).tap do |response|
       response.extend Docs::Response

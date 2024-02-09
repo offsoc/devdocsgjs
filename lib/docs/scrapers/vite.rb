@@ -15,20 +15,14 @@ module Docs
       Licensed under the MIT License.
     HTML
 
-    options[:skip] = %w(team.html team)
-    options[:skip_patterns] = [/\Ablog/, /\Aplugins/]
+    options[:skip] = %w(team.html plugins/)
 
     self.initial_paths = %w(guide/)
     html_filters.push 'vite/entries', 'vite/clean_html'
 
     version do
-      self.release = '5.0.11'
+      self.release = '4.4.8'
       self.base_url = 'https://vitejs.dev/'
-    end
-
-    version '4' do
-      self.release = '4.5.1'
-      self.base_url = 'https://v4.vitejs.dev/'
     end
 
     version '3' do

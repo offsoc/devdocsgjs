@@ -1,7 +1,7 @@
 require_relative '../../../test_helper'
 require_relative '../../../../lib/docs'
 
-class DocsEntryIndexTest < Minitest::Spec
+class DocsEntryIndexTest < MiniTest::Spec
   let :entry do
     Docs::Entry.new 'name', 'path', 'type'
   end

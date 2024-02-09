@@ -1,7 +1,7 @@
 require_relative '../../../../test_helper'
 require_relative '../../../../../lib/docs'
 
-class FileScraperTest < Minitest::Spec
+class FileScraperTest < MiniTest::Spec
   ROOT_PATH = File.expand_path('../../../../../../', __FILE__)
 
   class Scraper < Docs::FileScraper
