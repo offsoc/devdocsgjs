@@ -1,5 +1,5 @@
 # We bump this each release to fetch the latest stable GIRs
-FROM registry.fedoraproject.org/fedora:39 AS build
+FROM registry.fedoraproject.org/fedora:40 AS build
 
 ENV LANG=C.UTF-8
 
@@ -12,8 +12,8 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ \
         gom-devel granite-devel graphene-devel grilo-devel \
         gsettings-desktop-schemas-devel gsound-devel gspell-devel \
         gstreamer1-{,plugins-base-,plugins-bad-free-}devel gtk{2,3,4}-devel \
-        gtksourceview{3,4,5}-devel gupnp{,-dlna,-av}-devel harfbuzz-devel \
-        ibus-devel javascriptcoregtk6.0-devel keybinder3-devel \
+        gtksourceview{3,4,5}-devel libgtop2-devel gupnp{,-dlna,-av}-devel \
+        harfbuzz-devel ibus-devel javascriptcoregtk6.0-devel keybinder3-devel \
         libappindicator-gtk3-devel libadwaita-devel libappstream-glib-devel \
         libgcab1-devel libgdata-devel libgda-devel libgda5-devel \
         libgudev-devel libgweather4-devel libgxps-devel libhandy1-devel \
@@ -41,6 +41,7 @@ COPY lib/docs/scrapers/gnome/girs/mutter-9 /usr/lib64/mutter-9
 COPY lib/docs/scrapers/gnome/girs/mutter-10 /usr/lib64/mutter-10
 COPY lib/docs/scrapers/gnome/girs/mutter-11 /usr/lib64/mutter-11
 COPY lib/docs/scrapers/gnome/girs/mutter-12 /usr/lib64/mutter-12
+COPY lib/docs/scrapers/gnome/girs/mutter-13 /usr/lib64/mutter-13
 
 # Install ruby-3.2.2
 RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/3.2/ruby-3.2.2.tar.gz && \
@@ -75,12 +76,13 @@ RUN bundle exec thor gir:generate_all /usr/share/gir-1.0 && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-10 --include /usr/share/gnome-shell && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-11 --include /usr/share/gnome-shell && \
     bundle exec thor gir:generate_all /usr/lib64/mutter-12 --include /usr/share/gnome-shell && \
-    bundle exec thor gir:generate_all /usr/lib64/mutter-13
+    bundle exec thor gir:generate_all /usr/lib64/mutter-13 --include /usr/share/gnome-shell && \
+    bundle exec thor gir:generate_all /usr/lib64/mutter-14
 
 # The GNOME Shell GIRs need to include the current mutter GIRs
 RUN bundle exec thor gir:generate /usr/share/gnome-shell/Gvc-1.0.gir
-RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-13.gir --include /usr/lib64/mutter-13
-RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-13.gir --include /usr/lib64/mutter-13
+RUN bundle exec thor gir:generate /usr/share/gnome-shell/Shell-14.gir --include /usr/lib64/mutter-14
+RUN bundle exec thor gir:generate /usr/share/gnome-shell/St-14.gir --include /usr/lib64/mutter-14
 
 # Build docsets
 #
@@ -103,7 +105,7 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         gstinsertbin10 gstmpegts10 gstnet10 gstpbutils10 gstplayer10 gstrtp10 \
         gstrtsp10 gstsdp10 gsttag10 gstvideo10 gstvulkan10 gstwebrtc10 gtk20 \
         gtk30 gtk40 gtkosxapplication10 gtksource30 gtksource4 gtksource5 \
-        gudev10 gupnp12 gupnp16 gupnpav10 gupnpdlna20 gupnpdlnagst20 \
+        gtop20 gudev10 gupnp12 gupnp16 gupnpav10 gupnpdlna20 gupnpdlnagst20 \
         gupnpigd16 gvc10 gweather30 gweather40 gxps01 handy1 ibus10 \
         javascriptcore40 javascriptcore50 javascriptcore60 json10 keybinder30 \
         manette02 nm10 nma10 nma410 notify07 panel1 pango10 pangocairo10 \
@@ -124,7 +126,8 @@ RUN echo adw1 appindicator301 appstreamglib10 atk10 atspi20 cairo10 \
         cally10 clutter10 cogl10 coglpango10 meta10 shell10 st10 \
         cally11 clutter11 cogl11 coglpango11 meta11 shell11 st11 \
         cally12 clutter12 cogl12 coglpango12 meta12 shell12 st12 \
-        cally13 clutter13 cogl13 coglpango13 meta13 shell13 st13 \
+        cally13 clutter13 cogl13 coglpango13 meta13 mtk13 shell13 st13 \
+        cally14 clutter14 cogl14 coglpango14 meta14 mtk14 shell14 st14 \
         | tr ' ' '\n' | xargs -L1 -P$(nproc) bundle exec thor docs:generate --force
 
 # We deploy in ruby:3.2.2-alpine for size
