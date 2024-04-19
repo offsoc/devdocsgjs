@@ -62,7 +62,7 @@ RUN bundle config set --local deployment 'true' && \
 RUN bundle exec thor docs:download css javascript jasmine typescript
 
 # GJS documentation
-RUN bundle exec thor docs:generate gjs_scraper --force
+RUN bundle exec thor docs:generate gjs_scraper --force --debug
 
 # Generate scrapers
 RUN bundle exec thor gir:generate_all /usr/share/gir-1.0 && \
