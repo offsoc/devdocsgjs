@@ -23,9 +23,7 @@ RUN dnf install -y 'dnf-command(builddep)' @development-tools bzip2 gcc-c++ \
         polkit-devel poppler-glib-devel rest{,0.7}-devel telepathy-glib-devel \
         tracker-devel udisks-devel upower-devel vte{,291,291-gtk4}-devel \
         webkit2gtk{4.0,4.1}-devel webkitgtk6.0 wireplumber-devel && \
-    dnf builddep -y ruby && \
-    dnf install -y --allowerasing openssl1.1-devel python3-pip && \
-    pip3 install -I Markdown==3.3.7 && \
+    dnf builddep -y gobject-introspection ruby && \
     dnf clean all && \
     rm -rf /var/cache/dnf
 
@@ -42,6 +40,15 @@ COPY lib/docs/scrapers/gnome/girs/mutter-10 /usr/lib64/mutter-10
 COPY lib/docs/scrapers/gnome/girs/mutter-11 /usr/lib64/mutter-11
 COPY lib/docs/scrapers/gnome/girs/mutter-12 /usr/lib64/mutter-12
 COPY lib/docs/scrapers/gnome/girs/mutter-13 /usr/lib64/mutter-13
+
+# Install the latest gobject-introspection
+RUN git clone https://gitlab.gnome.org/GNOME/gobject-introspection.git \
+        --branch main --depth=1 /opt/gobject-introspection && \
+    cd /opt/gobject-introspection && \
+    meson setup -Ddoctool=enabled _build && \
+    meson compile -C _build && \
+    meson install -C _build
+ENV G_IR_DOC_TOOL=/usr/local/bin/g-ir-doc-tool
 
 # Install ruby-3.2.2
 RUN curl -Os http://ftp.ruby-lang.org/pub/ruby/3.2/ruby-3.2.2.tar.gz && \
